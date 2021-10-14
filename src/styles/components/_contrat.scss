@@ -1,0 +1,95 @@
+.data__contrat-cont {
+    padding: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+    .data__contrat-cont {
+        padding: 2rem;
+    }
+    .grid__contrat {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+    } 
+}
+
+.data__contrat-cont .title__form {
+    color: $title;
+    font-size: 11pt;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+
+    .data__contrat-cont .bx__btn-next {
+        display: flex;
+        justify-content: end;   
+    }
+
+    .data__contrat-cont .bx__btn-next {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        margin: 0 auto;
+        padding: 1rem;
+    } 
+
+    .data__contrat-cont .buttons__form-data button {
+        margin-right: 10px;
+    }
+
+    .data__contrat-cont .title__form {
+        font-size: 14pt;
+    }
+}
+
+.data__contrat-cont .sb__title_table {
+    margin-bottom: 1rem;
+    color: #6e6e6e;
+    font-size: 12px;
+}
+
+.container__btns-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.data__contrat-cont .bx__btn-next {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.data__contrat-cont .bx__btn-next button {
+  background-color: $primary;
+  border: none;
+  opacity: .8;
+
+  &:hover {
+    background-color: darken($color: $primary, $amount: 15);
+   }
+}
+
+/* table */
+.table__info {
+    font-size: 10px;
+    text-align: center;
+}
+
+td input[type="checkbox"] {
+    margin: 0 auto;
+    display: block;
+    width: 5%;
+    cursor: pointer;
+}
+
+/* Form */
+label {
+    font-size: 14px;
+}
+

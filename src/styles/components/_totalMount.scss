@@ -1,0 +1,27 @@
+.total__amount {
+    background-color: $primary;
+    display: flex;
+    justify-content: end;
+    padding: 1rem; 
+
+    & .total {
+        color: #fff;
+        font-size: 18px;
+        margin-right: 5px;
+        padding: 5px;
+    }
+
+    & .bx-amount {
+        display: flex;
+        justify-content: center;
+        background-color: #fff;
+        max-width: 40%;
+        padding: 5px;
+        border-radius: 5px;
+        & p {
+            color: $primary;
+            font-size: 18px;
+            margin-left: 3px;
+        }
+    }
+}

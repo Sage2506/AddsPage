@@ -1,0 +1,63 @@
+.container__plan-mensual {
+    padding: 1rem;
+    padding-top: 2rem;
+}
+
+.title {
+    color: $title;
+}
+
+.subtitle__plan-mensual {
+   color: $subtitle-grey;
+}
+
+.container__plan-mensual .card {
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.select__item {
+    & .card-title {
+        color: #fff;
+    }
+    background-color: #265CFF;
+    color: #fff;
+}
+
+.container__plan-mensual .card .card-text {
+    font-size: 12px;
+    text-align: justify;
+}
+
+.container__plan-mensual .card .row {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* btns */
+.cont__plan-men {
+    width: 100%;
+    padding: 1rem;
+}
+
+.btns__plan-men {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cont__plan-men .btns__plan-men .btn-next {
+    background: $primary;
+    opacity: .8;
+    color: #fff;
+z
+    &:hover {
+     background-color: darken($color:  $primary, $amount: 25);
+    }
+}
+
+.cont__plan-men .btns__plan-men .btn {
+    width: 30%;
+}
+

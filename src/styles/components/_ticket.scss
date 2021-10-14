@@ -1,0 +1,20 @@
+.ticket__preview {
+    padding: 1rem;
+
+}
+
+.ticket__preview .container-price {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.ticket__preview .container-price label {
+    margin-right: 1rem;
+}
+
+.ticket__preview .container-price input {
+    width: 45%;
+}

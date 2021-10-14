@@ -1,0 +1,31 @@
+.ending__container {
+    padding: 1rem;
+}
+
+.title__ending {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.msn__ending {
+  background-color: #f8f8f8;
+  padding: 1rem;
+  width: 100%;
+  height: 40vh;
+  border: 1px solid #d7d7d7;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;  
+}
+
+.ending__container .msn__ending p {
+    text-align: center;
+    color: $title;
+    font-size: 16px;
+}
+
+.btn__end {
+    float: right;
+    margin-top: 1rem;
+}

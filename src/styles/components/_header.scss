@@ -1,0 +1,22 @@
+.nav__bar{
+    background: $primary;
+    padding: 2rem;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    width: 35%;
+}
+
+@media screen and (min-width: 768px){
+    .logo {
+        width: 10%;
+    } 
+}
+
+@media screen and (max-width: 768px){
+    .logo {
+        margin: 0 auto;
+        display: block;
+    }
+}

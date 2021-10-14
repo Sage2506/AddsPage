@@ -1,0 +1,55 @@
+.title__time {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.date__range-cont {
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+
+/* calendar & time picker */
+.calendar__cont {
+   display: grid;
+}
+
+@media screen and (min-width: 768px) {
+    .calendar__cont {
+        grid-template-columns: repeat(2, 1fr);
+    } 
+}
+
+.time__picker-cont {
+    display: flex;
+}
+
+.calendar__cont .time-range {
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.calendar__cont .time-range label {
+    padding: 1rem;
+}
+
+/* calendar and day picker */
+.container__calendar {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
+
+.container__calendar li {
+    list-style: none;
+}
+
+.calendar {
+    width: 100%;
+    margin: 0 auto;
+}
