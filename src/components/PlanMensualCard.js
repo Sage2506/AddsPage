@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getSelectedPlan, setSelectedPlan } from '../service/storaje';
+import { currencyFormat } from '../utils/common';
 import { getStateLocalStorage, updateStateCheckStorage } from '../utils/localStorage';
 import { useLocalStorage } from '../utils/useLocalStorage';
 
@@ -9,7 +10,7 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           name: 'Que me vean con Loopita',
                           titleHead: 'Selecciona tu paquete de preferencia.',
                           title: 'PaqueTe Vean',
-                          price: '15000',
+                          price: 15000,
                           descripcion: 'Loopita tiene un plan semanal para ti, conoce sus beneficios',
                           state: false
                       },
@@ -18,7 +19,7 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           name: 'Que me recuerden con Loopita',
                           titleHead: 'Selecciona tu paquete de preferencia.',
                           title: 'PaqueTe Vean',
-                          price: '15000',
+                          price: 25000,
                           descripcion: 'Loopita tiene un plan mensual para ti, conoce sus beneficios',
                           state: false
                       },
@@ -27,7 +28,7 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           name: 'Todo con Loopita',
                           titleHead: 'Selecciona tu paquete de preferencia.',
                           title: 'PaqueTe Vean',
-                          price: '15000',
+                          price: 18000,
                           descripcion: 'Conoce el plan mensual y los complementos que Loopita tiene para ti',
                           state: false
                       }]
@@ -62,8 +63,10 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
             }
         ]);
     const [selectedPlan, setServicePlan] = useState({id: -1})
-    if( getSelectedPlan().id !== -1 && getSelectedPlan().id !== selectedPlan.id){
-      setServicePlan(getSelectedPlan())
+    const actualSelectedPlan = getSelectedPlan();
+    if( actualSelectedPlan.id !== -1 && actualSelectedPlan.id !== selectedPlan.id){
+      setServicePlan(actualSelectedPlan)
+      setAmount(actualSelectedPlan.price)
     }
     const [reload, setReload] = useState(false);
 
@@ -74,8 +77,9 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
     const handleSelectCard = (value) => {
         setSelectedPlan(value)
         setServicePlan(value)
-        //Busca el elemento en el array para cambiar su estado
-       /*  let item = arrayDataCard.find(item => item.id === value);
+        setAmount(value.price)
+/*         //Busca el elemento en el array para cambiar su estado
+       let item = arrayDataCard.find(item => item.id === value);
         let price = item.price;
         let total;
         let bolean;
@@ -113,7 +117,14 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                 total = amount - price;
                 setAmount(total);
             }
-        } */
+        }  */
+    }
+
+    const setTotal = (price) => {
+      if(amount){
+        const total= amount- price
+        setAmount(total)
+      }
     }
 
     return (
@@ -131,7 +142,7 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                                     <h5 className="card-title">
                                         {data.name}
                                     </h5>
-                                    <span>$15,000</span>
+                                    <span>{currencyFormat(data.price)}</span>
                                 </div>
                                 <p className="card-text">
                                     {data.descripcion}
