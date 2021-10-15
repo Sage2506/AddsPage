@@ -20,7 +20,7 @@ export const FormInfoClient = (
             <p
                 className="title__form"
             >
-                Introduce tu información
+                Vas en grande con Loopita
             </p>
 
             <Notification
@@ -64,7 +64,7 @@ export const FormInfoClient = (
                         onChange={handleChangeInput}
                     />
                 </div>
-
+                <hr/>
                 <div className="form-group ">
                     <label>Nombre de campaña</label>
                     <input
@@ -85,7 +85,6 @@ export const FormInfoClient = (
                 </div>
 
             </form>
-            <hr />
 
         </div>
     )

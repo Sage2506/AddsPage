@@ -1,40 +1,70 @@
 import React, { useState, useEffect } from 'react';
+import { getSelectedPlan, setSelectedPlan } from '../service/storaje';
 import { getStateLocalStorage, updateStateCheckStorage } from '../utils/localStorage';
 import { useLocalStorage } from '../utils/useLocalStorage';
 
 export const PlanMensualCard = ({ setAmount, amount }) => {
-
+    const plansCard = [{
+                          id: 0,
+                          name: 'Que me vean con Loopita',
+                          titleHead: 'Selecciona tu paquete de preferencia.',
+                          title: 'PaqueTe Vean',
+                          price: '15000',
+                          descripcion: 'Loopita tiene un plan semanal para ti, conoce sus beneficios',
+                          state: false
+                      },
+                      {
+                          id: 1,
+                          name: 'Que me recuerden con Loopita',
+                          titleHead: 'Selecciona tu paquete de preferencia.',
+                          title: 'PaqueTe Vean',
+                          price: '15000',
+                          descripcion: 'Loopita tiene un plan mensual para ti, conoce sus beneficios',
+                          state: false
+                      },
+                      {
+                          id: 2,
+                          name: 'Todo con Loopita',
+                          titleHead: 'Selecciona tu paquete de preferencia.',
+                          title: 'PaqueTe Vean',
+                          price: '15000',
+                          descripcion: 'Conoce el plan mensual y los complementos que Loopita tiene para ti',
+                          state: false
+                      }]
     const [arrayDataCard, setArrayDataCard] = useLocalStorage("planMensual",
         [
             {
                 id: 0,
-                name: 'Paquete vean',
+                name: 'Que me vean con Loopita',
                 titleHead: 'Selecciona tu paquete de preferencia.',
                 title: 'PaqueTe Vean',
                 price: '15000',
-                descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonlaoreet dolore magna aliquamerat volutp',
+                descripcion: 'Loopita tiene un plan semanal para ti, conoce sus beneficios',
                 state: false
             },
             {
                 id: 1,
-                name: 'Paquete vean',
+                name: 'Que me recuerden con Loopita',
                 titleHead: 'Selecciona tu paquete de preferencia.',
                 title: 'PaqueTe Vean',
                 price: '15000',
-                descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonlaoreet dolore magna aliquamerat volutp',
+                descripcion: 'Loopita tiene un plan mensual para ti, conoce sus beneficios',
                 state: false
             },
             {
                 id: 2,
-                name: 'Paquete vean',
+                name: 'Todo con Loopita',
                 titleHead: 'Selecciona tu paquete de preferencia.',
                 title: 'PaqueTe Vean',
                 price: '15000',
-                descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonlaoreet dolore magna aliquamerat volutp',
+                descripcion: 'Conoce el plan mensual y los complementos que Loopita tiene para ti',
                 state: false
             }
         ]);
-
+    const [selectedPlan, setServicePlan] = useState({id: -1})
+    if( getSelectedPlan().id !== -1 && getSelectedPlan().id !== selectedPlan.id){
+      setServicePlan(getSelectedPlan())
+    }
     const [reload, setReload] = useState(false);
 
     useEffect(() => {
@@ -42,8 +72,10 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
     }, [arrayDataCard, reload]);
 
     const handleSelectCard = (value) => {
+        setSelectedPlan(value)
+        setServicePlan(value)
         //Busca el elemento en el array para cambiar su estado
-        let item = arrayDataCard.find(item => item.id === value);
+       /*  let item = arrayDataCard.find(item => item.id === value);
         let price = item.price;
         let total;
         let bolean;
@@ -81,23 +113,23 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                 total = amount - price;
                 setAmount(total);
             }
-        }
+        } */
     }
 
     return (
         <>
             {
-                arrayDataCard.map((data, index) =>
+                plansCard.map((data, index) =>
 
                     <div key={index}>
                         <div
-                            className={`${data.state === true ? "card w-100 select__item" : "card w-100"}`}
-                            onClick={() => handleSelectCard(index)}
+                            className={`${selectedPlan.id === data.id ? "card w-100 select__item" : "card w-100"}`}
+                            onClick={() => handleSelectCard(data)}
                         >
                             <div className="card-body">
                                 <div className="row">
                                     <h5 className="card-title">
-                                        PaqueTe Vean
+                                        {data.name}
                                     </h5>
                                     <span>$15,000</span>
                                 </div>

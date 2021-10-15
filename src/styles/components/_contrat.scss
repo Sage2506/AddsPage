@@ -9,8 +9,9 @@
     .grid__contrat {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: 1rem;
-    } 
+        grid-gap: 2rem;
+
+    }
 }
 
 .data__contrat-cont .title__form {
@@ -24,7 +25,7 @@
 
     .data__contrat-cont .bx__btn-next {
         display: flex;
-        justify-content: end;   
+        justify-content: end;
     }
 
     .data__contrat-cont .bx__btn-next {
@@ -33,7 +34,7 @@
         width: 50%;
         margin: 0 auto;
         padding: 1rem;
-    } 
+    }
 
     .data__contrat-cont .buttons__form-data button {
         margin-right: 10px;
@@ -84,7 +85,6 @@
 td input[type="checkbox"] {
     margin: 0 auto;
     display: block;
-    width: 5%;
     cursor: pointer;
 }
 

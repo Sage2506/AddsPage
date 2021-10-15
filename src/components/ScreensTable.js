@@ -1,9 +1,46 @@
 import React, { useState } from 'react';
-import { getStateLocalStorage, updateStateCheckStorage } from '../utils/localStorage';
+import { getLocalScreen, setLocalScreen } from '../service/storaje';
 import { useLocalStorage } from '../utils/useLocalStorage';
 
 export const ScreensTable = ({ selectedCheck }) => {
-
+    const listScreenT = [
+      {
+          id: 1,
+          name: 'PantallaRio',
+          title: '1 hora',
+          service: '12 pm',
+          state: false,
+          maxPoint: '17:00',
+          avgViewers : '1548'
+      },
+      {
+        id: 2,
+        name: 'PantallaRio',
+        title: '1 hora',
+        service: '12 pm',
+        state: false,
+        maxPoint: '17:00',
+        avgViewers : '1440'
+      },
+      {
+        id: 3,
+        name: 'PantallaRio',
+        title: '1 hora',
+        service: '12 pm',
+        state: false,
+        maxPoint: '14:00',
+        avgViewers : '1235'
+      },
+      {
+        id: 4,
+        name: 'PantallaRio',
+        title: '1 hora',
+        service: '12 pm',
+        state: false,
+        maxPoint: '15:00',
+        avgViewers : '899'
+      }
+  ]
     const [listScreen, setListScreen] = useLocalStorage("dbListScreen",
         [
             {
@@ -12,57 +49,52 @@ export const ScreensTable = ({ selectedCheck }) => {
                 title: '1 hora',
                 service: '12 pm',
                 state: false,
+                maxPoint: '17:00',
+                avgViewers : '1548'
             },
             {
-                id: 2,
-                name: 'PantallaDos',
-                title: '1 hora',
-                service: '12 pm',
-                state: false,
+              id: 2,
+              name: 'PantallaRio',
+              title: '1 hora',
+              service: '12 pm',
+              state: false,
+              maxPoint: '17:00',
+              avgViewers : '1440'
+            },
+            {
+              id: 3,
+              name: 'PantallaRio',
+              title: '1 hora',
+              service: '12 pm',
+              state: false,
+              maxPoint: '14:00',
+              avgViewers : '1235'
+            },
+            {
+              id: 4,
+              name: 'PantallaRio',
+              title: '1 hora',
+              service: '12 pm',
+              state: false,
+              maxPoint: '15:00',
+              avgViewers : '899'
             }
         ]);
 
-    const [stateCheck, setStateCheck] = useState([]);
-
+    const [selectedScreen, setScreen] = useState({ id : -1});
+    if(getLocalScreen() !== null && getLocalScreen().id !== selectedScreen.id ){
+      setScreen(getLocalScreen());
+    }
     const isChecked = (value) => {
-
-        const storage = 'dbListScreen';
-        //Valor del check seleccionado
-        const currentIndex = stateCheck.indexOf(value);
-        //Estate del estado
-        const newChecked = [...stateCheck];
-        //Busca en el estorage si esta en true o en false 
-        const stateItem = listScreen.find(res => res.id === value);
-        //Comprueba si esta 
-        if (stateItem.state === true) {
-            newChecked.splice(currentIndex, 1);
-            stateItem.state = false
-
-            let actualityStorage = getStateLocalStorage('dbListScreen');
-            updateStateCheckStorage(storage, value, false, actualityStorage);
-
-            setStateCheck(newChecked);
-
-            if (stateCheck.length === 0) {
-                selectedCheck(false);
-            }
-
-        } else {
-            stateItem.state = true;
-            newChecked.push(value);
-
-            let actualityStorage = getStateLocalStorage('dbListScreen');
-            updateStateCheckStorage(storage, value, true, actualityStorage);
-
-            setStateCheck(newChecked);
-            selectedCheck(true);
-        }
+        console.log(value)
+        setLocalScreen(value)
+        setScreen(value)
     }
 
     return (
         <>
             <p className="title__form">
-                Pantallas disponibles
+                Que te vean con loopita en
             </p>
             <p className="sb__title_table">
                 Selecciona las pantallas
@@ -79,8 +111,7 @@ export const ScreensTable = ({ selectedCheck }) => {
                 </thead>
                 <tbody>
 
-                    {
-                        listScreen.map((el, index) => (
+                    { listScreenT.map((el, index) => (
                             <tr key={index}>
                                 <td>
                                     <input
@@ -88,13 +119,13 @@ export const ScreensTable = ({ selectedCheck }) => {
                                         type="checkbox"
                                         value={el.name}
                                         name="p1"
-                                        onChange={() => isChecked(el.id)}
-                                        checked={el.state}
+                                        onChange={() => isChecked(el)}
+                                        checked={selectedScreen && selectedScreen.id === el.id}
                                     />
                                 </td>
                                 <td>{el.name}</td>
-                                <td>{el.name}</td>
-                                <td>{el.name}</td>
+                                <td>{el.avgViewers}</td>
+                                <td>{el.maxPoint}</td>
                             </tr>
 
                         ))
