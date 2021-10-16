@@ -130,7 +130,7 @@ export const FormDataClient = () => {
           />
         </div>
         <div>
-        <ScreensTable
+          <ScreensTable
             selectedCheck={setselectedCheck}
           />
           <div>

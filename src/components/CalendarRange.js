@@ -5,6 +5,7 @@ import { es } from 'date-fns/locale';
 import { TimePickerDate } from './TimePickerDate';
 import { TotalAmount } from './TotalAmount';
 import { Buttons } from '../components/Buttons';
+import { setDailyAmount } from '../service/storaje';
 const locale = es;
 
 export const CalendarRange = () => {
@@ -68,6 +69,11 @@ export const CalendarRange = () => {
 
   }
 
+  const handleSetAmount = amount =>{
+    setAmount(amount)
+    setDailyAmount(amount)
+  }
+
   return (
     <>
       <div className="container__calendar">
@@ -91,7 +97,7 @@ export const CalendarRange = () => {
               setdateTimeItems={setdateTimeItems}
               dateTimeItems={dateTimeItems}
               price={price}
-              setAmount={setAmount}
+              setAmount={handleSetAmount}
               amount={amount}
             />
           </li>

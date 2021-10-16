@@ -5,7 +5,7 @@ export const ScreensTable = ({ selectedCheck }) => {
     const listScreenT = [
       {
           id: 1,
-          name: 'PantallaRio',
+          name: 'PantallaRio 1',
           title: '1 hora',
           service: '12 pm',
           state: false,
@@ -14,7 +14,7 @@ export const ScreensTable = ({ selectedCheck }) => {
       },
       {
         id: 2,
-        name: 'PantallaRio',
+        name: 'PantallaRio 2',
         title: '1 hora',
         service: '12 pm',
         state: false,
@@ -23,7 +23,7 @@ export const ScreensTable = ({ selectedCheck }) => {
       },
       {
         id: 3,
-        name: 'PantallaRio',
+        name: 'PantallaRio 3',
         title: '1 hora',
         service: '12 pm',
         state: false,
@@ -32,7 +32,7 @@ export const ScreensTable = ({ selectedCheck }) => {
       },
       {
         id: 4,
-        name: 'PantallaRio',
+        name: 'PantallaRio 4',
         title: '1 hora',
         service: '12 pm',
         state: false,

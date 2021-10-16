@@ -36,7 +36,6 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
       setServicePlan(actualSelectedPlan)
       setAmount(actualSelectedPlan.price)
     }
-    const [reload, setReload] = useState(false);
 
 
     const handleSelectCard = (value) => {

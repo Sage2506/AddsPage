@@ -9,8 +9,15 @@
     font-size: 22px;
 }
 
-.grid {
+.dobule_section_grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
 }
+
+.triple_section_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+}
+
