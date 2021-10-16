@@ -22,6 +22,8 @@ export default class UploadFile extends Component {
   render (  ) {
     return(
       <div className="Drop__file">
+      <div className="grid">
+      <div>
       <p className="title__video">Sube tu video</p>
       <p>Especificaciones del video. Lorem ipsum dolot sit amet, consectetuer
           adispicing e it, sed diam nonummy nibh</p>
@@ -32,6 +34,10 @@ export default class UploadFile extends Component {
           secondLink="previsualizacion"
           secondName="Siguiente"
       />
+      </div>
+
+
+      </div>
     </div>
     );
   }

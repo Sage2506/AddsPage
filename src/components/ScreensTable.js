@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { getLocalScreen, setLocalScreen } from '../service/storaje';
-import { useLocalStorage } from '../utils/useLocalStorage';
 
 export const ScreensTable = ({ selectedCheck }) => {
     const listScreenT = [
@@ -41,45 +40,7 @@ export const ScreensTable = ({ selectedCheck }) => {
         avgViewers : '899'
       }
   ]
-    const [listScreen, setListScreen] = useLocalStorage("dbListScreen",
-        [
-            {
-                id: 1,
-                name: 'PantallaRio',
-                title: '1 hora',
-                service: '12 pm',
-                state: false,
-                maxPoint: '17:00',
-                avgViewers : '1548'
-            },
-            {
-              id: 2,
-              name: 'PantallaRio',
-              title: '1 hora',
-              service: '12 pm',
-              state: false,
-              maxPoint: '17:00',
-              avgViewers : '1440'
-            },
-            {
-              id: 3,
-              name: 'PantallaRio',
-              title: '1 hora',
-              service: '12 pm',
-              state: false,
-              maxPoint: '14:00',
-              avgViewers : '1235'
-            },
-            {
-              id: 4,
-              name: 'PantallaRio',
-              title: '1 hora',
-              service: '12 pm',
-              state: false,
-              maxPoint: '15:00',
-              avgViewers : '899'
-            }
-        ]);
+
 
     const [selectedScreen, setScreen] = useState({ id : -1});
     if(getLocalScreen() !== null && getLocalScreen().id !== selectedScreen.id ){

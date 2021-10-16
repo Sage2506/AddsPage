@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { getSelectedPlan, setSelectedPlan } from '../service/storaje';
 import { currencyFormat } from '../utils/common';
-import { getStateLocalStorage, updateStateCheckStorage } from '../utils/localStorage';
-import { useLocalStorage } from '../utils/useLocalStorage';
 
 export const PlanMensualCard = ({ setAmount, amount }) => {
     const plansCard = [{
@@ -32,36 +30,6 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           descripcion: 'Conoce el plan mensual y los complementos que Loopita tiene para ti',
                           state: false
                       }]
-    const [arrayDataCard, setArrayDataCard] = useLocalStorage("planMensual",
-        [
-            {
-                id: 0,
-                name: 'Que me vean con Loopita',
-                titleHead: 'Selecciona tu paquete de preferencia.',
-                title: 'PaqueTe Vean',
-                price: '15000',
-                descripcion: 'Loopita tiene un plan semanal para ti, conoce sus beneficios',
-                state: false
-            },
-            {
-                id: 1,
-                name: 'Que me recuerden con Loopita',
-                titleHead: 'Selecciona tu paquete de preferencia.',
-                title: 'PaqueTe Vean',
-                price: '15000',
-                descripcion: 'Loopita tiene un plan mensual para ti, conoce sus beneficios',
-                state: false
-            },
-            {
-                id: 2,
-                name: 'Todo con Loopita',
-                titleHead: 'Selecciona tu paquete de preferencia.',
-                title: 'PaqueTe Vean',
-                price: '15000',
-                descripcion: 'Conoce el plan mensual y los complementos que Loopita tiene para ti',
-                state: false
-            }
-        ]);
     const [selectedPlan, setServicePlan] = useState({id: -1})
     const actualSelectedPlan = getSelectedPlan();
     if( actualSelectedPlan.id !== -1 && actualSelectedPlan.id !== selectedPlan.id){
@@ -70,9 +38,6 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
     }
     const [reload, setReload] = useState(false);
 
-    useEffect(() => {
-        setReload(false);
-    }, [arrayDataCard, reload]);
 
     const handleSelectCard = (value) => {
         setSelectedPlan(value)
@@ -118,13 +83,6 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                 setAmount(total);
             }
         }  */
-    }
-
-    const setTotal = (price) => {
-      if(amount){
-        const total= amount- price
-        setAmount(total)
-      }
     }
 
     return (
