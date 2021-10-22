@@ -10,7 +10,6 @@ export default class DropFile extends Component {
   }
 
   changeFile = e => {
-    console.log(e.target.id)
   }
 
   saveChanges = () => {
@@ -19,7 +18,6 @@ export default class DropFile extends Component {
   }
 
   saveFile = e => {
-    console.log(e.target.files[0])
     this.setState({ file:  e.target.files[0], fileName: e.target.files[0].name})
   }
 

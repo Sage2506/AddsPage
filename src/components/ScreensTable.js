@@ -20,7 +20,6 @@ export const ScreensTable = ({ selectedCheck }) => {
       setScreen(getLocalScreen());
     }
     const isChecked = (value) => {
-        console.log(value)
         setLocalScreen(value)
         setScreen(value)
     }

@@ -40,7 +40,6 @@ export default class UploadFile extends Component {
     const { file, screen, servicePlan } = this.state;
 
     const impactEstimate = 10000/18/60*(servicePlan.price*2/60)*1.5;
-    console.log('something I dont know', getLocalFileAdd())
     return (
       <div className="Drop__file">
         <div className="dobule_section_grid">

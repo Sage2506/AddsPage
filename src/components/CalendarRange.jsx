@@ -14,16 +14,15 @@ export default class CalendarRange extends Component {
     this.state = {
       selectedDays : [],
       itemsTimePicker : [],
+      addHoursList : [],
       dateTimeItems: [],
       amount : 0,
       price : {
         valueA: 50,
         valueB: 75
-      }
+      },
+      total: 0
     }
-  }
-
-  componentDidMount = () => {
   }
 
   handleDayClick = (day, { selected }) => {
@@ -43,35 +42,60 @@ export default class CalendarRange extends Component {
     const parsedDate = dayParsed + '-' + monthParsed + '-' + year
     // cuando viene selected borrarlo de la lista, cuando viene undefined agregarlo
     const selectDays = this.state.selectedDays.concat()
+    const selectedAddHoursList = this.state.addHoursList.concat()
     if( selected ){
       const selectedIndex = selectDays.findIndex(selectedDay =>
         DateUtils.isSameDay(selectedDay, day)
       );
       selectDays.splice(selectedIndex, 1);
+      const addItemIndex = selectedAddHoursList.findIndex( selectedAddHourItem => selectedAddHourItem.stringDate === parsedDate)
+      selectedAddHoursList.splice(addItemIndex,1)
       removeSelectedDate(parsedDate)
     } else {
       selectDays.push(day)
       var newAddDate = {
         stringDate: parsedDate,
-        startHour: 0,
-        endHour: 1
+        startHour: 6,
+        endHour: 7
       }
+      selectedAddHoursList.push(newAddDate)
       addSelectedDate(newAddDate)
     }
     this.setState({
-      selectedDays : selectDays
+      selectedDays : selectDays,
+      addHoursList : selectedAddHoursList
     })
+    this.setAmount()
+  }
+
+  changeAddTime = (addHourData ) => {
+    const itemIndex = this.state.addHoursList.findIndex( selectedAddHourItem => selectedAddHourItem.stringDate === addHourData.stringDate )
+    const newAddHoursList = this.state.addHoursList.concat()
+    newAddHoursList[itemIndex] = addHourData
+    this.setState({
+      addHoursList : newAddHoursList
+    })
+    this.setAmount()
   }
 
   setAmount = () => {
-    console.log('make calculation')
-    console.log(this.state.selectedAddItems)
-    return 100
+    let total = 0
+    getSelectedDates().forEach(addDateItem => {
+      const { startHour, endHour } = addDateItem
+      if( endHour <= 16){
+        total += (endHour-startHour) * this.state.price.valueA
+      } else if ( startHour >= 16) {
+        total += (endHour-startHour) * this.state.price.valueB
+      } else {
+        total += (16-startHour) * this.state.price.valueA
+        total += (endHour-16) * this.state.price.valueB
+      }
+    });
+    this.setState({total})
   }
 
   render (  ) {
-    const { selectedDays, dateTimeItems, price, amount, selectedAddItems } = this.state
-    console.log('selectedDays on render: ', selectedDays)
+    const { selectedDays, dateTimeItems, price, amount, total, addHoursList } = this.state
     return(
       <>
       <div className="container__calendar">
@@ -83,7 +107,7 @@ export default class CalendarRange extends Component {
           className="calendar"
         />
         <p>Horario</p>
-        {getSelectedDates().map((data, index) => (
+        {addHoursList.map((data, index) => (
           <li
             key={index}
           >
@@ -93,6 +117,7 @@ export default class CalendarRange extends Component {
               dateTimeItems={dateTimeItems}
               price={price}
               amount={amount}
+              changeAddTime={this.changeAddTime}
             />
 
           </li>
@@ -108,7 +133,7 @@ export default class CalendarRange extends Component {
         />
       </div>
       <TotalAmount
-        amount={this.setAmount()}
+        amount={total}
       />
     </>
     );

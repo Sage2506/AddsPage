@@ -62,6 +62,6 @@ export const removeSelectedDate = date => {
 
 export const alterDateHours = date => {
   let { selectedDays } = serviceData.dailyPlan
-  var updateDate = selectedDays.find( selectedDate => selectedDate.stringDate === date.stringDate)
-  updateDate = date
+  var updateDate = selectedDays.findIndex( selectedDate => selectedDate.stringDate === date.stringDate)
+  serviceData.dailyPlan.selectedDays[updateDate] = date
 }
