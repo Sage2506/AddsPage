@@ -6,7 +6,7 @@ export const TicketDay = () => {
     return (
         <div className="ticket__preview">
             <p className="title">Recibo de mes</p>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th>
@@ -20,31 +20,31 @@ export const TicketDay = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="2" class="table-active">Nombre</td>
+                        <td colspan="2" className="table-active">Nombre</td>
                         <td>@twitter</td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="table-active">Campaña</td>
+                        <td colspan="2" className="table-active">Campaña</td>
                         <td>@twitter</td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="table-active">Pantallas</td>
+                        <td colspan="2" className="table-active">Pantallas</td>
                         <td>@twitter</td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="table-active">Total días</td>
+                        <td colspan="2" className="table-active">Total días</td>
                         <td>@twitter</td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="table-active">Total horas</td>
+                        <td colspan="2" className="table-active">Total horas</td>
                         <td>@twitter</td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="container-price">
-                <label for="inputPassword2" class="visually-hidden">Total:</label>
-                <input type="text" class="form-control" />
+            <div className="container-price">
+                <label for="inputPassword2" className="visually-hidden">Total:</label>
+                <input type="text" className="form-control" />
             </div>
 
             <div>

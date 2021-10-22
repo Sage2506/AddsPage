@@ -11,33 +11,6 @@ export const ScreensTable = ({ selectedCheck }) => {
           state: false,
           maxPoint: '17:00',
           avgViewers : '1548'
-      },
-      {
-        id: 2,
-        name: 'PantallaRio 2',
-        title: '1 hora',
-        service: '12 pm',
-        state: false,
-        maxPoint: '17:00',
-        avgViewers : '1440'
-      },
-      {
-        id: 3,
-        name: 'PantallaRio 3',
-        title: '1 hora',
-        service: '12 pm',
-        state: false,
-        maxPoint: '14:00',
-        avgViewers : '1235'
-      },
-      {
-        id: 4,
-        name: 'PantallaRio 4',
-        title: '1 hora',
-        service: '12 pm',
-        state: false,
-        maxPoint: '15:00',
-        avgViewers : '899'
       }
   ]
 

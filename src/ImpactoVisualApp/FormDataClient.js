@@ -143,8 +143,10 @@ export const FormDataClient = () => {
           <Buttons
             firstLink={'planPorDia'}
             secondLink={'planMensual'}
-            firstName={'En serio, plan por dia'}
-            secondName={'Muy en serio, plan mensual'}
+            firstName={'En serio'}
+            secondName={'Muy en serio'}
+            firstSubText={"plan por dia"}
+            secondSubText={"plan mensual"}
             disabledBtn={disabledBtn}
           />
           <div className="bx__btn-next">

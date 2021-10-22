@@ -21,7 +21,7 @@
 @media screen and (min-width: 768px) {
     .calendar__cont {
         grid-template-columns: repeat(2, 1fr);
-    } 
+    }
 }
 
 .time__picker-cont {
@@ -52,4 +52,23 @@
 .calendar {
     width: 100%;
     margin: 0 auto;
+}
+
+.inline-group {
+  max-width: 9rem;
+  padding: .5rem;
+}
+
+.inline-group .form-control {
+  text-align: right;
+}
+
+.form-control[type="number"]::-webkit-inner-spin-button,
+.form-control[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn-outline-secondary {
+  width: unset !important;
 }

@@ -10,7 +10,8 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           title: 'PaqueTe Vean',
                           price: 15000,
                           descripcion: 'Loopita tiene un plan semanal para ti, conoce sus beneficios',
-                          state: false
+                          state: false,
+                          loopMultipliyer: 1
                       },
                       {
                           id: 1,
@@ -19,16 +20,18 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           title: 'PaqueTe Vean',
                           price: 25000,
                           descripcion: 'Loopita tiene un plan mensual para ti, conoce sus beneficios',
-                          state: false
+                          state: false,
+                          loopMultipliyer: 2
                       },
                       {
                           id: 2,
                           name: 'Todo con Loopita',
                           titleHead: 'Selecciona tu paquete de preferencia.',
                           title: 'PaqueTe Vean',
-                          price: 18000,
+                          price: 35000,
                           descripcion: 'Conoce el plan mensual y los complementos que Loopita tiene para ti',
-                          state: false
+                          state: false,
+                          loopMultipliyer: 3
                       }]
     const [selectedPlan, setServicePlan] = useState({id: -1})
     const actualSelectedPlan = getSelectedPlan();

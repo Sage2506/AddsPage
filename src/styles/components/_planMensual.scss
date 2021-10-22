@@ -3,6 +3,19 @@
     padding-top: 2rem;
 }
 
+.mensual_plan_dobule_section_grid {
+  display: inherit;
+}
+
+
+@media (min-width: 768px){
+  .mensual_plan_dobule_section_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+  }
+}
+
 .title {
     color: $title;
 }

@@ -7,10 +7,12 @@ export const Buttons = (
         secondLink,
         firstName,
         secondName,
-        disabledBtn
+        disabledBtn,
+        firstSubText = '',
+        secondSubText = ''
     }) => {
 
-    
+
 
     return (
         <div className="container__btns-info">
@@ -20,6 +22,12 @@ export const Buttons = (
             >
 
                 {firstName}
+                { firstSubText.length > 0 && (
+                  <span className="btn-sub-text">
+                    <br/>
+                    {firstSubText}
+                  </span>
+                ) }
             </Link>
 
             <Link
@@ -27,6 +35,12 @@ export const Buttons = (
                 to={secondLink}
             >
                 {secondName}
+                { secondSubText.length > 0 && (
+                  <span className="btn-sub-text">
+                    <br/>
+                    {secondSubText}
+                  </span>
+                ) }
             </Link>
         </div>
     )

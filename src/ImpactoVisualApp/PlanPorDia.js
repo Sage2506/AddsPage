@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalendarRange } from '../components/CalendarRange';
+import CalendarRange from '../components/CalendarRange';
 
 export const PlanPorDia = () => {
 

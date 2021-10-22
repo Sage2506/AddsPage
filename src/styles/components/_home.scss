@@ -1,10 +1,9 @@
 .cover__page {
     background-image: url('../../assets/img/home.png');
-
     background-repeat: no-repeat;
     background-size: cover;
     width:100vw;
-    height: 60vh;
+    height: 120vh;
     position: relative;
 }
 
@@ -13,6 +12,29 @@
     display: flex;
     justify-content: center;
     padding: 1rem;
+}
+
+.grid_double {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  height: inherit;
+}
+
+.grid_double div {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid_double div div {
+  flex: 1 1;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid_double div div div{
+  padding: 40% 0%;
 }
 
 @media screen and (min-width: 768px) {
