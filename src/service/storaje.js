@@ -1,10 +1,9 @@
 let fileAdd = null
 let selectedScreen = null
-let selectedPlan = { id : -1}
 let dailyAmount = null
 
 const serviceData = {
-  mensualPlan : {},
+  mensualPlan : { id: -1},
   dailyPlan : {
     selectedDays : []
   },
@@ -30,12 +29,11 @@ export const getLocalScreen = () => {
 }
 
 export const setSelectedPlan = (servicePlan) => {
-  selectedPlan = servicePlan
-  serviceData.selectedPlan = servicePlan
+  serviceData.mensualPlan = servicePlan
 }
 
 export const getSelectedPlan = () => {
-  return selectedPlan;
+  return serviceData.mensualPlan
 }
 
 export const setDailyAmount = amount => {

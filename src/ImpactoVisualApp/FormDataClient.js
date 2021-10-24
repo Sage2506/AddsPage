@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ScreensTable } from '../components/ScreensTable';
 import { FormInfoClient } from '../components/FormInfoClient';
-import { Buttons } from '../components/Buttons';
+import Buttons from '../components/Buttons';
 import { useLocalStorage } from '../utils/useLocalStorage';
 import { getStateLocalStorage } from '../utils/localStorage';
 
@@ -30,7 +30,7 @@ export const FormDataClient = () => {
   const [isEdit, setisEdit] = useState(boleanEdit);
   const [reload, setReload] = useState(false);
 
-  const [disabledBtn, setdisabledBtn] = useState(false);
+  const [disabledBtn, setdisabledBtn] = useState(true);
   const [selectedCheck, setselectedCheck] = useState(false);
   const [completeForm, setcompleteForm] = useState(false);
 
@@ -55,29 +55,42 @@ export const FormDataClient = () => {
     })
   }
 
+  const handleSelectedCheck = () => {
+    setselectedCheck(true)
+    setReload(true);
+  }
+
   let { nameClient, email, tel, camp } = formValues;
 
   useEffect(() => {
-
-    if (completeForm && selectedCheck) {
+    console.log('completeForm: '+completeForm+" selectedCheck: "+selectedCheck)
+    /* if (completeForm && selectedCheck) {
       setReload(true);
+      console.log('setDisabledBtn(false)')
       setdisabledBtn(false);
     }
-
+    console.log('dataRequiredForm: '+dataRequiredForm+' resTable: '+resTable)
     if (dataRequiredForm && resTable) {
       setReload(true);
+      console.log('setDisabledBtn(false)')
       setdisabledBtn(false)
     }
 
     if (!selectedCheck) {
       setReload(true);
+      console.log('setDisabledBtn(false)')
+      setdisabledBtn(true)
+    } */
+    const { nameClient, email, tel, camp } = formValues;
+    if( nameClient ==='' || email ==='' || tel ==='' || camp === '' || selectedCheck ){
       setdisabledBtn(false)
+    } else {
+      setdisabledBtn(true)
     }
 
     if (!resTable) {
 
     } setReload(true);
-    setdisabledBtn(false)
 
     setTimeout(() => {
       setShow(false)
@@ -132,6 +145,7 @@ export const FormDataClient = () => {
         <div>
           <ScreensTable
             selectedCheck={setselectedCheck}
+            onChecked={handleSelectedCheck}
           />
           <div>
             <p
@@ -149,13 +163,6 @@ export const FormDataClient = () => {
             secondSubText={"plan mensual"}
             disabledBtn={disabledBtn}
           />
-          <div className="bx__btn-next">
-            <button
-              className="btn btn-primary btn-sm"
-            >
-              Siguiente
-            </button>
-          </div>
         </div>
       </div>
     </div>

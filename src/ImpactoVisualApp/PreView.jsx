@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PreviewScreenOne from '../components/PreviewScreenOne';
 import { PreviewScreenTwo } from '../components/PreviewScreenTwo';
-import { Buttons } from '../components/Buttons';
+import Buttons from '../components/Buttons';
 import { getLocalFileAdd } from '../service/storaje';
 
 export default class PreView extends Component {

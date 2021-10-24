@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 export default class PreviewScreenOne extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render (  ) {
     const { addFile } = this.props

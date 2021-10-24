@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getLocalScreen, setLocalScreen } from '../service/storaje';
 
-export const ScreensTable = ({ selectedCheck }) => {
+export const ScreensTable = ({ selectedCheck, onChecked }) => {
     const listScreenT = [
       {
           id: 1,
@@ -22,6 +22,7 @@ export const ScreensTable = ({ selectedCheck }) => {
     const isChecked = (value) => {
         setLocalScreen(value)
         setScreen(value)
+        onChecked(true)
     }
 
     return (

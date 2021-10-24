@@ -1,5 +1,5 @@
 import React from 'react';
-import { Buttons } from '../components/Buttons';
+import Buttons from '../components/Buttons';
 
 export const TicketDay = () => {
 

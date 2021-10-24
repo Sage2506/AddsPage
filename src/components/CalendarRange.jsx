@@ -4,8 +4,9 @@ import 'react-day-picker/lib/style.css';
 import { es } from 'date-fns/locale';
 import TimePickerDate from './TimePickerDate';
 import { TotalAmount } from './TotalAmount';
-import { Buttons } from '../components/Buttons';
-import { addSelectedDate, getSelectedDates, removeSelectedDate, setDailyAmount } from '../service/storaje';
+import Buttons from '../components/Buttons';
+import { addSelectedDate, getSelectedDates, removeSelectedDate } from '../service/storaje';
+import { calculateDailyServiceTotals } from '../utils/common';
 const locale = es;
 
 export default class CalendarRange extends Component {
@@ -79,19 +80,8 @@ export default class CalendarRange extends Component {
   }
 
   setAmount = () => {
-    let total = 0
-    getSelectedDates().forEach(addDateItem => {
-      const { startHour, endHour } = addDateItem
-      if( endHour <= 16){
-        total += (endHour-startHour) * this.state.price.valueA
-      } else if ( startHour >= 16) {
-        total += (endHour-startHour) * this.state.price.valueB
-      } else {
-        total += (16-startHour) * this.state.price.valueA
-        total += (endHour-16) * this.state.price.valueB
-      }
-    });
-    this.setState({total})
+    const totalsResult = calculateDailyServiceTotals(getSelectedDates())
+    this.setState({total : totalsResult.total})
   }
 
   render (  ) {

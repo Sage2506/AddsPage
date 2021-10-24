@@ -1,6 +1,6 @@
 import React from 'react';
-import { Buttons } from '../components/Buttons';
-import { BuyForm } from '../components/BuyForm';
+import Buttons from '../components/Buttons';
+import BuyForm from '../components/BuyForm';
 
 export const BuyConfirm = () => {
     return (
@@ -9,7 +9,7 @@ export const BuyConfirm = () => {
                 Confirmación de compra
             </p>
             <BuyForm/>
-            <Buttons 
+            <Buttons
                 firstName="Atrás"
                 secondName="Siguiente"
                 firstLink="previsualizacion"

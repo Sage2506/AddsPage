@@ -1,5 +1,5 @@
 import React from 'react';
-import { Buttons } from '../components/Buttons';
+import Buttons from '../components/Buttons';
 import { PlanMensualCard } from '../components/PlanMensualCard';
 import { TotalAmount } from '../components/TotalAmount';
 import { useLocalStorage } from '../utils/useLocalStorage';
