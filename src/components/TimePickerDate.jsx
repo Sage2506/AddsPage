@@ -6,7 +6,7 @@ export default class TimePickerDate extends Component {
     super(props);
     this.state = {
       stringDate: "",
-      startHour: 6,
+      startHour: 5,
       endHour: 7
     }
   }
@@ -24,7 +24,7 @@ export default class TimePickerDate extends Component {
 
   startTimeDown = () => {
     const { startHour } = this.state
-    if (startHour !== 6) {
+    if (startHour !== 5) {
       this.changeTime(startHour - 1, 'startHour')
     }
   }
@@ -47,11 +47,11 @@ export default class TimePickerDate extends Component {
     if (!isNaN(e.target.value)) {
       const newHour = parseInt(e.target.value)
       if (e.target.id === 'startHour') {
-        if (newHour >= 6 && newHour < this.state.endHour && newHour < 23) {
+        if (newHour >= 5 && newHour < this.state.endHour && newHour < 23) {
           this.changeTime(newHour, e.target.id)
         }
       } else {
-        if (newHour > 6 && newHour > this.state.startHour && newHour < 24) {
+        if (newHour > 5 && newHour > this.state.startHour && newHour < 24) {
           this.changeTime(newHour, e.target.id)
         }
       }

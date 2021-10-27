@@ -56,7 +56,7 @@ export default class CalendarRange extends Component {
       selectDays.push(day)
       var newAddDate = {
         stringDate: parsedDate,
-        startHour: 6,
+        startHour: 5,
         endHour: 7
       }
       selectedAddHoursList.push(newAddDate)

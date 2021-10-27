@@ -3,7 +3,7 @@ import Buttons from '../components/Buttons';
 import DropFile from '../components/DropFile';
 import { getLocalScreen, getSelectedDates, getSelectedPlan, setLocalFileAdd } from '../service/storaje';
 import { calculateDailyServiceTotals, currencyFormat } from '../utils/common';
-
+import preview from '../assets/img/preview.png';
 export default class UploadFile extends Component {
   constructor(props) {
     super(props);
@@ -39,6 +39,9 @@ export default class UploadFile extends Component {
   }
 
   componentDidMount = () => {
+    //TODO: print screen name
+    //TODO: show stellar picture
+    //TODO: preview add inside stellar picture
     const screen = getLocalScreen(); // the selected screen for the list
     const servicePlan = getSelectedPlan() // selected month plan if one
     const dailyServiceConfig = getSelectedDates(); // configurated daily plan if one
@@ -78,26 +81,26 @@ export default class UploadFile extends Component {
     }
 
     statistics.total = servicePlan.price
-    statistics.peakHour = statistics.total / 2
-    statistics.noPeakHour = statistics.total / 2
-    statistics.totalSpots = statistics.total / 10 / servicePlan.loopMultipliyer
-    statistics.totalProjectTime = statistics.totalSpots * 20 / 60
-    statistics.totalCars = 1000 / 18 / 60 * statistics.totalProjectTime
-    const totalImpactEstimation = statistics.totalCars * 1.5
-    statistics.totalImpactEstimation = totalImpactEstimation
-    statistics.profileCPlus = totalImpactEstimation * 0.35
-    statistics.profileC = totalImpactEstimation * 0.38
-    statistics.profileAB = totalImpactEstimation * 0.12
-    statistics.profileE = totalImpactEstimation * 0.09
-    statistics.profileD = totalImpactEstimation * 0.06
-    statistics.men = totalImpactEstimation * 0.45
-    statistics.women = totalImpactEstimation * 0.55
-    statistics.ageRangeZeroToFourteen = totalImpactEstimation * 0.16
-    statistics.ageRangeFifteenToNineteen = totalImpactEstimation * 0.15
-    statistics.ageRangeTwentyToTwentynine = totalImpactEstimation * 0.14
-    statistics.ageRangeThirtyToFourtyfour = totalImpactEstimation * 0.22
-    statistics.ageRangeFourtyfiveToFiftyfour = totalImpactEstimation * 0.18
-    statistics.ageRangeOverFiftyfive = totalImpactEstimation * 0.15
+    statistics.peakHour = statistics.total * 3 / 5
+    statistics.noPeakHour = statistics.total * 2 / 5
+    statistics.totalSpots = Math.round( statistics.total / 10 / servicePlan.loopMultipliyer)
+    statistics.totalProjectTime = 18 * 10 * 20 / 60 * 30 ;
+    statistics.totalCars = Math.round( 1000 / 18 / 60 * statistics.totalProjectTime)
+    const totalImpactEstimation = Math.round(statistics.totalCars * 1.5)
+    statistics.totalImpactEstimation = Math.round(totalImpactEstimation)
+    statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
+    statistics.profileC = Math.round(totalImpactEstimation * 0.38)
+    statistics.profileAB = Math.round(totalImpactEstimation * 0.12)
+    statistics.profileE = Math.round(totalImpactEstimation * 0.09)
+    statistics.profileD = Math.round(totalImpactEstimation * 0.06)
+    statistics.men = Math.round(totalImpactEstimation * 0.45)
+    statistics.women = Math.round(totalImpactEstimation * 0.55)
+    statistics.ageRangeZeroToFourteen =Math.round( totalImpactEstimation * 0.16)
+    statistics.ageRangeFifteenToNineteen = Math.round(totalImpactEstimation * 0.15)
+    statistics.ageRangeTwentyToTwentynine = Math.round(totalImpactEstimation * 0.14)
+    statistics.ageRangeThirtyToFourtyfour = Math.round(totalImpactEstimation * 0.22)
+    statistics.ageRangeFourtyfiveToFiftyfour = Math.round(totalImpactEstimation * 0.18)
+    statistics.ageRangeOverFiftyfive = Math.round(totalImpactEstimation * 0.15)
 
     this.setState({
       statistics
@@ -127,12 +130,12 @@ export default class UploadFile extends Component {
       totalSpots: 0,
       women: 0,
     }
-    const { total, minTotal, maxTotal } = calculateDailyServiceTotals(dailyServiceConfig)
+    const { total, minTotal, maxTotal, totalHours } = calculateDailyServiceTotals(dailyServiceConfig)
     statistics.total = total;
     statistics.peakHour = maxTotal;
     statistics.noPeakHour = minTotal;
-    statistics.totalSpots = total / 10
-    statistics.totalProjectTime = statistics.totalSpots * 20 / 60
+    statistics.totalSpots = totalHours * 10
+    statistics.totalProjectTime = totalHours * 10 * 20 / 60//statistics.totalSpots * 20 / 60
     statistics.totalCars = 1000 / 18 / 60 * statistics.totalProjectTime
     const totalImpactEstimation = statistics.totalCars * 1.5
     statistics.totalImpactEstimation = totalImpactEstimation
@@ -207,6 +210,7 @@ export default class UploadFile extends Component {
                 <video controls id="videoPreview" >
                   <source src={URL.createObjectURL(file)} />
                 </video>
+                <img src={preview} alt="" />
               </div>
             }
           </div>
@@ -232,19 +236,19 @@ export default class UploadFile extends Component {
                   <td>{currencyFormat(noPeakHour)}</td>
                 </tr>
                 <tr>
-                  <td>Total de tiempo proyectado</td>
-                  <td>{(totalProjectTime).toFixed(2)}</td>
+                  <td>Total de tiempo proyectado (minutos)</td>
+                  <td>{(totalProjectTime)}</td>
                 </tr>
                 <tr>
                   <th colSpan="2">Impactos totales</th>
                 </tr>
                 <tr>
                   <td>No. de automóviles</td>
-                  <td>{totalCars.toFixed(2)}</td>
+                  <td>{totalCars}</td>
                 </tr>
                 <tr>
                   <td>Estimado de impactos</td>
-                  <td>{totalImpactEstimation.toFixed(2)}</td>
+                  <td>{totalImpactEstimation}</td>
                 </tr>
               </tbody>
             </table>
@@ -257,23 +261,23 @@ export default class UploadFile extends Component {
                 </tr>
                 <tr>
                   <td>C+</td>
-                  <td>{profileCPlus.toFixed(2)}</td>
+                  <td>{profileCPlus}</td>
                 </tr>
                 <tr>
                   <td>C</td>
-                  <td>{profileC.toFixed(2)}</td>
+                  <td>{profileC}</td>
                 </tr>
                 <tr>
                   <td>AB</td>
-                  <td>{profileAB.toFixed(2)}</td>
+                  <td>{profileAB}</td>
                 </tr>
                 <tr>
                   <td> E</td>
-                  <td>{profileE.toFixed(2)}</td>
+                  <td>{profileE}</td>
                 </tr>
                 <tr>
                   <td>D</td>
-                  <td>{profileD.toFixed(2)}</td>
+                  <td>{profileD}</td>
                 </tr>
               </tbody>
             </table>
@@ -281,11 +285,11 @@ export default class UploadFile extends Component {
               <tbody>
                 <tr>
                   <td>Hombres</td>
-                  <td>{men.toFixed(2)}</td>
+                  <td>{men}</td>
                 </tr>
                 <tr>
                   <td>Mujeres</td>
-                  <td>{women.toFixed(2)}</td>
+                  <td>{women}</td>
                 </tr>
               </tbody>
             </table>
@@ -298,27 +302,27 @@ export default class UploadFile extends Component {
                 </tr>
                 <tr>
                   <td>0-14</td>
-                  <td>{ageRangeZeroToFourteen.toFixed(2)}</td>
+                  <td>{ageRangeZeroToFourteen}</td>
                 </tr>
                 <tr>
                   <td>15-19</td>
-                  <td>{ageRangeFifteenToNineteen.toFixed(2)}</td>
+                  <td>{ageRangeFifteenToNineteen}</td>
                 </tr>
                 <tr>
                   <td>20-29</td>
-                  <td>{ageRangeTwentyToTwentynine.toFixed(2)}</td>
+                  <td>{ageRangeTwentyToTwentynine}</td>
                 </tr>
                 <tr>
                   <td>30-44</td>
-                  <td>{ageRangeThirtyToFourtyfour.toFixed(2)}</td>
+                  <td>{ageRangeThirtyToFourtyfour}</td>
                 </tr>
                 <tr>
                   <td>45-54</td>
-                  <td>{ageRangeFourtyfiveToFiftyfour.toFixed(2)}</td>
+                  <td>{ageRangeFourtyfiveToFiftyfour}</td>
                 </tr>
                 <tr>
                   <td>Más de 55</td>
-                  <td>{ageRangeOverFiftyfive.toFixed(2)}</td>
+                  <td>{ageRangeOverFiftyfive}</td>
                 </tr>
               </tbody>
             </table>
@@ -330,7 +334,7 @@ export default class UploadFile extends Component {
               <tbody>
                 <tr>
                   <td>No. total de spots</td>
-                  <td>{totalSpots}</td>
+                  <td>{totalSpots.toFixed(2)}</td>
                 </tr>
               </tbody>
             </table>

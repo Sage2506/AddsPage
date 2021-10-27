@@ -13,7 +13,7 @@ export default class Buttons extends Component {
       secondSubText
     } = this.props
 
-    console.log(' disabled state',disabledBtn)
+    console.log(' disabled firstSubText',firstSubText)
 
     return(
       <div className="container__btns-info">
@@ -21,7 +21,7 @@ export default class Buttons extends Component {
         className={`${disabledBtn ? `btn btn-primary btn-sm disabled disabled-link` : `btn btn-primary btn-sm`}`}
         to={firstLink} >
         {firstName}
-        {firstSubText.length > 0 && (
+        {firstSubText !== undefined && firstSubText.length > 0 && (
           <span className="btn-sub-text">
             <br />
             {firstSubText}
@@ -32,7 +32,7 @@ export default class Buttons extends Component {
         className={`${disabledBtn ? `btn btn-primary btn-sm disabled disabled-link` : `btn btn-primary btn-sm`}`}
         to={secondLink} >
         {secondName}
-        {secondSubText.length > 0 && (
+        {secondSubText !== undefined  && secondSubText.length > 0 && (
           <span className="btn-sub-text">
             <br />
             {secondSubText}
