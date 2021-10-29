@@ -34,7 +34,8 @@ export default class UploadFile extends Component {
         totalProjectTime: 0,
         totalSpots: 0,
         women: 0
-      }
+      },
+      carsPerHour : 15000
     }
   }
 
@@ -81,11 +82,11 @@ export default class UploadFile extends Component {
     }
 
     statistics.total = servicePlan.price
-    statistics.peakHour = statistics.total * 3 / 5
-    statistics.noPeakHour = statistics.total * 2 / 5
+    statistics.peakHour = statistics.total * 3 / 5 / 10 / servicePlan.loopMultipliyer
+    statistics.noPeakHour = statistics.total * 2 / 5 / 10 / servicePlan.loopMultipliyer
     statistics.totalSpots = Math.round( statistics.total / 10 / servicePlan.loopMultipliyer)
     statistics.totalProjectTime = 18 * 10 * 20 / 60 * 30 ;
-    statistics.totalCars = Math.round( 1000 / 18 / 60 * statistics.totalProjectTime)
+    statistics.totalCars = Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
     const totalImpactEstimation = Math.round(statistics.totalCars * 1.5)
     statistics.totalImpactEstimation = Math.round(totalImpactEstimation)
     statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
@@ -132,11 +133,11 @@ export default class UploadFile extends Component {
     }
     const { total, minTotal, maxTotal, totalHours } = calculateDailyServiceTotals(dailyServiceConfig)
     statistics.total = total;
-    statistics.peakHour = maxTotal;
-    statistics.noPeakHour = minTotal;
+    statistics.peakHour = maxTotal / 10;
+    statistics.noPeakHour = minTotal / 10;
     statistics.totalSpots = totalHours * 10
     statistics.totalProjectTime = totalHours * 10 * 20 / 60//statistics.totalSpots * 20 / 60
-    statistics.totalCars = 1000 / 18 / 60 * statistics.totalProjectTime
+    statistics.totalCars = this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime
     const totalImpactEstimation = statistics.totalCars * 1.5
     statistics.totalImpactEstimation = totalImpactEstimation
     statistics.profileCPlus = totalImpactEstimation * 0.35
@@ -219,21 +220,22 @@ export default class UploadFile extends Component {
           <div>
             <table className="table table-striped">
               <tbody>
+              <tr>
+                  <td>No. total de spots</td>
+                  <td>{totalSpots.toFixed(2)}</td>
+                </tr>
                 <tr>
                   <td>Pantalla</td>
                   <td>{ }</td>
                 </tr>
+
                 <tr>
-                  <td>Presupuesto proyectado</td>
-                  <td>{currencyFormat(total)}</td>
+                  <td>Total de spots en hora pico</td>
+                  <td>{peakHour}</td>
                 </tr>
                 <tr>
-                  <td>Hora pico</td>
-                  <td>{currencyFormat(peakHour)}</td>
-                </tr>
-                <tr>
-                  <td>Hora no pico</td>
-                  <td>{currencyFormat(noPeakHour)}</td>
+                  <td>Total de spots en hora no pico</td>
+                  <td>{noPeakHour}</td>
                 </tr>
                 <tr>
                   <td>Total de tiempo proyectado (minutos)</td>
@@ -261,7 +263,8 @@ export default class UploadFile extends Component {
                 </tr>
                 <tr>
                   <td>C+</td>
-                  <td>{profileCPlus}</td>
+                  <td>{profileCPlus} </td>
+                  <td>(45%) agregar a todos con su respectivo porcentaje</td>
                 </tr>
                 <tr>
                   <td>C</td>
@@ -332,9 +335,9 @@ export default class UploadFile extends Component {
           <div>
             <table className="table table-striped">
               <tbody>
-                <tr>
-                  <td>No. total de spots</td>
-                  <td>{totalSpots.toFixed(2)}</td>
+              <tr>
+                  <td>Presupuesto proyectado</td>
+                  <td>{currencyFormat(total)}</td>
                 </tr>
               </tbody>
             </table>
