@@ -13,8 +13,6 @@ export default class Buttons extends Component {
       secondSubText
     } = this.props
 
-    console.log(' disabled firstSubText',firstSubText)
-
     return(
       <div className="container__btns-info">
       <Link

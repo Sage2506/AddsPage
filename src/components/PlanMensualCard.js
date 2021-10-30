@@ -8,7 +8,7 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           name: 'Que me vean con Loopita',
                           titleHead: 'Selecciona tu paquete de preferencia.',
                           title: 'PaqueTe Vean',
-                          price: 15000,
+                          price: 15000.00,
                           descripcion: 'Loopita tiene un plan semanal para ti, conoce sus beneficios',
                           state: false,
                           loopMultipliyer: 1
@@ -18,7 +18,7 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           name: 'Que me recuerden con Loopita',
                           titleHead: 'Selecciona tu paquete de preferencia.',
                           title: 'PaqueTe Vean',
-                          price: 25000,
+                          price: 25000.00,
                           descripcion: 'Loopita tiene un plan mensual para ti, conoce sus beneficios',
                           state: false,
                           loopMultipliyer: 2
@@ -28,7 +28,7 @@ export const PlanMensualCard = ({ setAmount, amount }) => {
                           name: 'Todo con Loopita',
                           titleHead: 'Selecciona tu paquete de preferencia.',
                           title: 'PaqueTe Vean',
-                          price: 35000,
+                          price: 35000.00,
                           descripcion: 'Conoce el plan mensual y los complementos que Loopita tiene para ti',
                           state: false,
                           loopMultipliyer: 3

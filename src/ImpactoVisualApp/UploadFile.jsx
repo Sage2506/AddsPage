@@ -136,23 +136,23 @@ export default class UploadFile extends Component {
     statistics.peakHour = maxTotal / 10;
     statistics.noPeakHour = minTotal / 10;
     statistics.totalSpots = totalHours * 10
-    statistics.totalProjectTime = totalHours * 10 * 20 / 60//statistics.totalSpots * 20 / 60
-    statistics.totalCars = this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime
+    statistics.totalProjectTime = (totalHours * 10 * 20 / 60).toFixed(2)//statistics.totalSpots * 20 / 60
+    statistics.totalCars =Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
     const totalImpactEstimation = statistics.totalCars * 1.5
     statistics.totalImpactEstimation = totalImpactEstimation
-    statistics.profileCPlus = totalImpactEstimation * 0.35
-    statistics.profileC = totalImpactEstimation * 0.38
-    statistics.profileAB = totalImpactEstimation * 0.12
-    statistics.profileE = totalImpactEstimation * 0.09
-    statistics.profileD = totalImpactEstimation * 0.06
-    statistics.men = totalImpactEstimation * 0.45
-    statistics.women = totalImpactEstimation * 0.55
-    statistics.ageRangeZeroToFourteen = totalImpactEstimation * 0.16
-    statistics.ageRangeFifteenToNineteen = totalImpactEstimation * 0.15
-    statistics.ageRangeTwentyToTwentynine = totalImpactEstimation * 0.14
-    statistics.ageRangeThirtyToFourtyfour = totalImpactEstimation * 0.22
-    statistics.ageRangeFourtyfiveToFiftyfour = totalImpactEstimation * 0.18
-    statistics.ageRangeOverFiftyfive = totalImpactEstimation * 0.15
+    statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
+    statistics.profileC = Math.round(totalImpactEstimation * 0.38)
+    statistics.profileAB = Math.round(totalImpactEstimation * 0.12)
+    statistics.profileE = Math.round(totalImpactEstimation * 0.09)
+    statistics.profileD = Math.round(totalImpactEstimation * 0.06)
+    statistics.men = Math.round((totalImpactEstimation * 0.45).toFixed(2))
+    statistics.women = Math.round((totalImpactEstimation * 0.55).toFixed(2))
+    statistics.ageRangeZeroToFourteen = Math.round(totalImpactEstimation * 0.16)
+    statistics.ageRangeFifteenToNineteen = Math.round(totalImpactEstimation * 0.15)
+    statistics.ageRangeTwentyToTwentynine = Math.round(totalImpactEstimation * 0.14)
+    statistics.ageRangeThirtyToFourtyfour = Math.round(totalImpactEstimation * 0.22)
+    statistics.ageRangeFourtyfiveToFiftyfour = Math.round(totalImpactEstimation * 0.18)
+    statistics.ageRangeOverFiftyfive = Math.round(totalImpactEstimation * 0.15)
 
     this.setState({
       statistics
@@ -259,28 +259,32 @@ export default class UploadFile extends Component {
             <table className="table table-striped">
               <tbody>
                 <tr>
-                  <th colSpan="2">Perfil socioeconomico</th>
+                  <th colSpan="3">Perfil socioeconomico</th>
                 </tr>
                 <tr>
                   <td>C+</td>
                   <td>{profileCPlus} </td>
-                  <td>(45%) agregar a todos con su respectivo porcentaje</td>
+                  <td>(35%)</td>
                 </tr>
                 <tr>
                   <td>C</td>
                   <td>{profileC}</td>
+                  <td>(38%)</td>
                 </tr>
                 <tr>
                   <td>AB</td>
                   <td>{profileAB}</td>
+                  <td>(12%)</td>
                 </tr>
                 <tr>
                   <td> E</td>
                   <td>{profileE}</td>
+                  <td>(9%)</td>
                 </tr>
                 <tr>
                   <td>D</td>
                   <td>{profileD}</td>
+                  <td>(6%)</td>
                 </tr>
               </tbody>
             </table>
