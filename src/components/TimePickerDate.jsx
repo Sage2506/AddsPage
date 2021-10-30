@@ -7,7 +7,7 @@ export default class TimePickerDate extends Component {
     this.state = {
       stringDate: "",
       startHour: 5,
-      endHour: 7
+      endHour: 6
     }
   }
 
