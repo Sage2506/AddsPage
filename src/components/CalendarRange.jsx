@@ -120,6 +120,7 @@ export default class CalendarRange extends Component {
           secondName="Siguiente"
           firstLink="contrato"
           secondLink="archivos"
+          disabledBtn = {this.state.selectedDays.length < 1}
         />
       </div>
       <TotalAmount

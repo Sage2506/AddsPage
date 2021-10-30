@@ -79,7 +79,7 @@ export default class TimePickerDate extends Component {
                   <i className="fa fa-minus"></i>
                 </button>
               </div>
-              <input className="form-control quantity" min="0" value={startHour} type="number" name="startHour" id="startHour" onChange={handleHourChange} />
+              <input className="form-control quantity" value={startHour +":00"} type="text" name="startHour" id="startHour" readOnly={true}/>
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary btn-plus" onClick={startTimeUp}>
                   <i className="fa fa-plus"></i>
@@ -95,7 +95,7 @@ export default class TimePickerDate extends Component {
                   <i className="fa fa-minus"></i>
                 </button>
               </div>
-              <input className="form-control quantity" min="0" value={endHour} type="number" name="endHour" id="endHour" onChange={handleHourChange} />
+              <input className="form-control quantity" value={endHour+":00"} type="text" name="endHour" id="endHour" readOnly={true} />
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary btn-plus" onClick={endTimeUp}>
                   <i className="fa fa-plus"></i>

@@ -14,15 +14,12 @@ export const calculateDailyServiceTotals = (dailyData) => {
   let lowHours = 0, highHours = 0
   dailyData.forEach(dayConfig => {
     const { startHour, endHour } = dayConfig
-    if (endHour <= 16) {
-      // calculando horas bajo
-      lowHours += endHour - startHour
-    } else if (startHour >= 16) {
-      // calculando horas sobre
-      highHours = endHour - startHour
-    } else {
-      lowHours += 16 - startHour
-      highHours += endHour - 16
+    for(let i = startHour; i< endHour ; i++ ){
+        if( i <16 || i >= 20 ){
+          lowHours++
+        } else {
+          highHours++
+        }
     }
   });
   const minTotal = lowHours * price.valueA, maxTotal = highHours * price.valueB

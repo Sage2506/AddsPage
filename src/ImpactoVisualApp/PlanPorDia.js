@@ -4,7 +4,7 @@ import CalendarRange from '../components/CalendarRange';
 export const PlanPorDia = () => {
 
     return (
-        <>
+        <div>
             <div className="title__time">
                 <p className="title">
                     Plan por día
@@ -16,6 +16,6 @@ export const PlanPorDia = () => {
             <div className="calendar__cont">
                 <CalendarRange />
             </div>
-        </>
+        </div>
     )
 }
