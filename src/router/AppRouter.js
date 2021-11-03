@@ -5,7 +5,7 @@ import {
     Route
 } from "react-router-dom";
 import { Home } from '../ImpactoVisualApp/Home';
-import { FormDataClient } from '../ImpactoVisualApp/FormDataClient';
+import FormDataClient from '../ImpactoVisualApp/FormDataClient';
 import { PlanMensual } from "../ImpactoVisualApp/PlanMensual";
 import { PlanPorDia } from "../ImpactoVisualApp/PlanPorDia";
 import UploadFile from "../ImpactoVisualApp/UploadFile";

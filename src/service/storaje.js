@@ -8,6 +8,7 @@ const serviceData = {
     selectedDays : []
   },
   screenSelected : {},
+  clientData : {}
 
 }
 
@@ -62,4 +63,12 @@ export const alterDateHours = date => {
   let { selectedDays } = serviceData.dailyPlan
   var updateDate = selectedDays.findIndex( selectedDate => selectedDate.stringDate === date.stringDate)
   serviceData.dailyPlan.selectedDays[updateDate] = date
+}
+
+export const setClient = client => {
+  serviceData.clientData = client
+}
+
+export const getClient = () => {
+  return serviceData.clientData
 }

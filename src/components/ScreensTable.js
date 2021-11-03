@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { getLocalScreen, setLocalScreen } from '../service/storaje';
+import React from 'react';
 
-export const ScreensTable = ({ selectedCheck, onChecked }) => {
+export const ScreensTable = ({ onChecked, selectedScreen }) => {
     const listScreenT = [
       {
           id: 1,
@@ -14,15 +13,12 @@ export const ScreensTable = ({ selectedCheck, onChecked }) => {
       }
   ]
 
-
-    const [selectedScreen, setScreen] = useState({ id : -1});
-    if(getLocalScreen() !== null && getLocalScreen().id !== selectedScreen.id ){
-      setScreen(getLocalScreen());
-    }
-    const isChecked = (value) => {
-        setLocalScreen(value)
-        setScreen(value)
-        onChecked(true)
+    const isChecked = (e,value) => {
+        if (e.target.checked){
+            onChecked(value)
+        } else {
+            onChecked(null)
+        }
     }
 
     return (
@@ -51,10 +47,10 @@ export const ScreensTable = ({ selectedCheck, onChecked }) => {
                                     <input
                                         className="form-check-input"
                                         type="checkbox"
-                                        value={el.name}
+                                        value={el}
                                         name="p1"
-                                        onChange={() => isChecked(el)}
-                                        checked={selectedScreen && selectedScreen.id === el.id}
+                                        onChange={e => isChecked(e,el)}
+                                        checked={selectedScreen !== null && selectedScreen.id === el.id}
                                     />
                                 </td>
                                 <td>{el.name}</td>

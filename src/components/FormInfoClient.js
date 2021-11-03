@@ -5,24 +5,16 @@ export const FormInfoClient = (
   {
     handleSubmit,
     handleChangeInput,
-    variant,
-    textAlert,
-    show,
-    formValues,
-    isEdit,
+    nameClient,
+    email,
+    tel,
+    camp
   }
 ) => {
-
-  const { nameClient, email, tel, camp } = formValues;
 
   return (
     <div>
       <p className="title__form"> Vas en grande con Loopita </p>
-      <Notification
-        show={show}
-        variant={variant}
-        textAlert={textAlert}
-      />
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Nombre completo</label>
@@ -72,7 +64,7 @@ export const FormInfoClient = (
           <input
             type="submit"
             className={`btn btn-primary btn-sm`}
-            value={`${isEdit ? 'Editar datos' : 'Ingresar datos'}`}
+            value={`Ingresar datos`}
           />
         </div>
 
