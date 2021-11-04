@@ -10,6 +10,9 @@ export default class UploadFile extends Component {
     this.state = {
       file: null,
       fileName: '',
+      fileExtension : "",
+      videoFormats : ['mp4'],
+      imageFormats : ['png','jpg','jpeg'],
       addFile: null,
       servicePlan: { id: -1 },
       screen: { id: -1 },
@@ -83,8 +86,8 @@ export default class UploadFile extends Component {
     }
 
     statistics.total = servicePlan.price
-    statistics.peakHour = statistics.total * 3 / 5 / 10 / servicePlan.loopMultipliyer
-    statistics.noPeakHour = statistics.total * 2 / 5 / 10 / servicePlan.loopMultipliyer
+    statistics.peakHour = Math.round( statistics.total * 3 / 5 / 10 / servicePlan.loopMultipliyer)
+    statistics.noPeakHour = Math.round(statistics.total * 2 / 5 / 10 / servicePlan.loopMultipliyer)
     statistics.totalSpots = Math.round( statistics.total / 10 / servicePlan.loopMultipliyer)
     statistics.totalProjectTime = 18 * 10 * 20 / 60 * 30 ;
     statistics.totalCars = Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
@@ -163,7 +166,8 @@ export default class UploadFile extends Component {
   handleUpload = fileData => {
     this.setState({
       file: fileData.file,
-      fileName: fileData.fileName
+      fileName: fileData.fileName,
+      fileExtension: fileData.fileExtension
     })
     setLocalFileAdd(fileData)
   }
@@ -172,7 +176,10 @@ export default class UploadFile extends Component {
     const {
       file,
       statistics,
-      screen
+      screen,
+      fileExtension,
+      videoFormats,
+      imageFormats
     } = this.state;
     const {
       ageRangeFifteenToNineteen,
@@ -207,13 +214,16 @@ export default class UploadFile extends Component {
           </div>
           <div>
             <p className="title__video">Previsualizacion</p>
-            <p>Especificaciones del video</p>
-            {file &&
+            <p>Especificaciones del anuncio</p>
+            {file && fileExtension !== "" && videoFormats.includes(fileExtension) &&
               <div>
                 <video controls id="videoPreview" >
                   <source src={URL.createObjectURL(file)} />
                 </video>
               </div>
+            }
+            {file &&  fileExtension !== "" && imageFormats.includes(fileExtension) &&
+              <img src={URL.createObjectURL(file)} alt="addPreview" />
             }
           </div>
         </div>

@@ -7,7 +7,9 @@ export default class TimePickerDate extends Component {
     this.state = {
       stringDate: "",
       startHour: 5,
-      endHour: 6
+      endHour: 6,
+      earliestHour : 6,
+      latestHour: 24
     }
   }
 
@@ -17,36 +19,40 @@ export default class TimePickerDate extends Component {
 
   startTimeUp = () => {
     const { startHour, endHour } = this.state
-    if (endHour - startHour > 1 && startHour !== 22) {
+    if (endHour - startHour > 1 && startHour !== this.state.latestHour-1) {
       this.changeTime(startHour + 1, 'startHour')
     }
   }
 
   startTimeDown = () => {
     const { startHour } = this.state
-    if (startHour !== 5) {
+    if (startHour !== this.state.earliestHour) {
       this.changeTime(startHour - 1, 'startHour')
     }
   }
 
   endTimeUp = () => {
     const { endHour } = this.state
-    if (endHour !== 23) {
+    if (endHour !== this.state.latestHour) {
       this.changeTime(endHour + 1, 'endHour')
     }
   }
 
   endTimeDown = () => {
     const { endHour, startHour, } = this.state
-    if (endHour - startHour > 1 && startHour !== 7) {
+    if (endHour - startHour > 1 && startHour !== this.state.earliestHour+1) {
       this.changeTime(endHour - 1, 'endHour')
     }
   }
 
   parseHourToAmPm = ( hour ) => {
-    if( hour > 12) {
+    if( hour === 12){
+      return `12:00 PM`
+    } else if( hour > 12 && hour < 24) {
       return `${hour-12}:00 PM`
-    }else {
+    } else if ( hour === 24){
+      return `${hour-12}:00 AM`
+    } else {
       return `${hour}:00 AM`
     }
   }

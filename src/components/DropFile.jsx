@@ -5,7 +5,11 @@ export default class DropFile extends Component {
     super(props);
     this.state = {
       file : null,
-      fileName : ""
+      fileName : "",
+      fileExtension : "",
+      videoFormats : ['mp4'],
+      imageFormats : ['png','jpg','jpeg']
+
     }
   }
 
@@ -18,24 +22,33 @@ export default class DropFile extends Component {
   }
 
   saveFile = e => {
-    this.setState({ file:  e.target.files[0], fileName: e.target.files[0].name})
+    const fileName = e.target.files[0].name
+    console.log('file name', fileName)
+    if(fileName.split('.').length > 1){
+      this.setState({ fileExtension : fileName.split('.')[fileName.split('.').length-1]})
+    }
+    this.setState({ file:  e.target.files[0], fileName: fileName})
   }
 
   render (  ) {
     const { changeFile, saveFile, saveChanges, state } = this
-    const { file } = state
+    const { file, fileExtension, imageFormats, videoFormats } = state
     return(
       <div>
         <div>
           <section className="container__drop-file" onClick={changeFile}>
             {!file && <input type="file" onChange={saveFile} />}
-            {file &&
+            {file &&  fileExtension !== "" && videoFormats.includes(fileExtension) &&
               <video autoPlay={true} id="videoPreview" >
                 <source src={URL.createObjectURL(file)} />
               </video>
             }
+            {file &&  fileExtension !== "" && imageFormats.includes(fileExtension) &&
+              <img src={URL.createObjectURL(file)} alt="addPreview" />
+            }
           </section>
         </div>
+        <div>{fileExtension}</div>
         <button type="button" onClick={saveChanges}> Guardar archivo</button>
       </div>
     );
