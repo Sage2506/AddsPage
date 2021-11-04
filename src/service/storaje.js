@@ -26,7 +26,7 @@ export const setLocalScreen = (screen) => {
 }
 
 export const getLocalScreen = () => {
-  return selectedScreen
+  return serviceData.screenSelected
 }
 
 export const setSelectedPlan = (servicePlan) => {

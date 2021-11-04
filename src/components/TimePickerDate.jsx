@@ -43,6 +43,14 @@ export default class TimePickerDate extends Component {
     }
   }
 
+  parseHourToAmPm = ( hour ) => {
+    if( hour > 12) {
+      return `${hour-12}:00 PM`
+    }else {
+      return `${hour}:00 AM`
+    }
+  }
+
   handleHourChange = e => {
     if (!isNaN(e.target.value)) {
       const newHour = parseInt(e.target.value)
@@ -79,7 +87,7 @@ export default class TimePickerDate extends Component {
                   <i className="fa fa-minus"></i>
                 </button>
               </div>
-              <input className="form-control quantity" value={startHour +":00"} type="text" name="startHour" id="startHour" readOnly={true}/>
+              <input className="form-control quantity" value={this.parseHourToAmPm(startHour)} type="text" name="startHour" id="startHour" readOnly={true}/>
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary btn-plus" onClick={startTimeUp}>
                   <i className="fa fa-plus"></i>
@@ -95,7 +103,7 @@ export default class TimePickerDate extends Component {
                   <i className="fa fa-minus"></i>
                 </button>
               </div>
-              <input className="form-control quantity" value={endHour+":00"} type="text" name="endHour" id="endHour" readOnly={true} />
+              <input className="form-control quantity" value={this.parseHourToAmPm(endHour)} type="text" name="endHour" id="endHour" readOnly={true} />
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary btn-plus" onClick={endTimeUp}>
                   <i className="fa fa-plus"></i>

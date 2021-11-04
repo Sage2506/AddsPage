@@ -30,16 +30,12 @@ export default class DropFile extends Component {
           <section className="container__drop-file" onClick={changeFile}>
             {!file && <input type="file" onChange={saveFile} />}
             {file &&
-              <video controls id="videoPreview">
+              <video autoPlay={true} id="videoPreview" >
                 <source src={URL.createObjectURL(file)} />
               </video>
             }
           </section>
         </div>
-        <img
-          alt="miimagen"
-          src="http://localhost:4000/uploads/test.png"
-        />
         <button type="button" onClick={saveChanges}> Guardar archivo</button>
       </div>
     );

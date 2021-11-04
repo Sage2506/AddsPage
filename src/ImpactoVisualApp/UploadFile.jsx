@@ -44,6 +44,7 @@ export default class UploadFile extends Component {
     //TODO: show stellar picture
     //TODO: preview add inside stellar picture
     const screen = getLocalScreen(); // the selected screen for the list
+    console.log('screen', screen);
     const servicePlan = getSelectedPlan() // selected month plan if one
     const dailyServiceConfig = getSelectedDates(); // configurated daily plan if one
     if (servicePlan.id === -1 && dailyServiceConfig !== null) {
@@ -139,7 +140,7 @@ export default class UploadFile extends Component {
     statistics.totalProjectTime = (totalHours * 10 * 20 / 60).toFixed(2)//statistics.totalSpots * 20 / 60
     statistics.totalCars =Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
     const totalImpactEstimation = statistics.totalCars * 1.5
-    statistics.totalImpactEstimation = totalImpactEstimation
+    statistics.totalImpactEstimation = Math.round(totalImpactEstimation)
     statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
     statistics.profileC = Math.round(totalImpactEstimation * 0.38)
     statistics.profileAB = Math.round(totalImpactEstimation * 0.12)
@@ -170,7 +171,8 @@ export default class UploadFile extends Component {
   render() {
     const {
       file,
-      statistics
+      statistics,
+      screen
     } = this.state;
     const {
       ageRangeFifteenToNineteen,
@@ -211,7 +213,6 @@ export default class UploadFile extends Component {
                 <video controls id="videoPreview" >
                   <source src={URL.createObjectURL(file)} />
                 </video>
-                <img src={preview} alt="" />
               </div>
             }
           </div>
@@ -226,7 +227,7 @@ export default class UploadFile extends Component {
                 </tr>
                 <tr>
                   <td>Pantalla</td>
-                  <td>{ }</td>
+                  <td>{ screen? screen.name : ''}</td>
                 </tr>
 
                 <tr>

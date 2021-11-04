@@ -71,7 +71,7 @@ export default class FormDataClient extends Component {
             secondName={'Muy en serio'}
             firstSubText={"plan por dia"}
             secondSubText={"plan mensual"}
-            disabledBtn={this.disabledBtn()}
+            disabledBtn={ nameClient === '' || email === '' || tel === '' || camp === '' || selectedScreen === null}
           />
         </div>
       </div>

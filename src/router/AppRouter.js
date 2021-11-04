@@ -27,7 +27,6 @@ export const AppRouter = () => {
                     <Route exact path="/archivos" component={UploadFile}/>
                     <Route exact path="/previsualizacion" component={PreView}/>
                     <Route exact path="/compra" component={BuyConfirm}/>
-                    <Route exact path="/confirmacionCompraMes" component={TicketMonth} />
                     <Route exact path="/confirmacionCompraDia" component={TicketDay} />
                     <Route exact path="/finalizacion" component={Ending} />
                 </Switch>

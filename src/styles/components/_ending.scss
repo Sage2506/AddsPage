@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .ending__container .msn__ending p {
@@ -28,4 +28,5 @@
 .btn__end {
     float: right;
     margin-top: 1rem;
+    width: 50%;
 }

@@ -13,8 +13,9 @@ export const BuyConfirm = () => {
                 firstName="Atrás"
                 secondName="Siguiente"
                 firstLink="previsualizacion"
-                secondLink="confirmacionCompraMes"
+                secondLink="finalizacion"
             />
+
         </div>
     )
 }

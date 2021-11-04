@@ -1,4 +1,5 @@
 import React from 'react';
+import { setLocalScreen } from '../service/storaje';
 
 export const ScreensTable = ({ onChecked, selectedScreen }) => {
     const listScreenT = [
@@ -16,8 +17,10 @@ export const ScreensTable = ({ onChecked, selectedScreen }) => {
     const isChecked = (e,value) => {
         if (e.target.checked){
             onChecked(value)
+            setLocalScreen(value)
         } else {
             onChecked(null)
+            setLocalScreen(null)
         }
     }
 

@@ -9,7 +9,7 @@ export const Ending = () => {
                     <p>En unos momentos un ejecutivo</p>
                     <p>se comunicará contigo.</p>
                 </div>
-                <div className="btn__end">
+                <div className="btn__end ">
                     <button
                         className="btn btn-md btn-primary"
                     >
