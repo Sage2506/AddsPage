@@ -12,6 +12,7 @@ export const Header = () => {
                   className="logo"
               />
               <img
+                style={{float:"right"}}
                   src={Logo1}
                   alt=""
                   className="logo"

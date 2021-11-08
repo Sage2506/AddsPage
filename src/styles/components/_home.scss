@@ -1,10 +1,8 @@
 .cover__page {
-    background-image: url('../../assets/img/home.png');
+    background-image: url('../../assets/img/home_movil.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    width:100vw;
-    height: 120vh;
-    position: relative;
+    background-size: 100%;
+    height: 773px;
 }
 
 .poster__ad {
@@ -41,6 +39,20 @@
     .poster__ad {
         height: 50vh;
     }
+    .cover__page {
+      background-image: url('../../assets/img/home.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+      height: unset;
+  }
+
+  .grid_double div div {
+    flex: 1 1;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6em;
+  }
 }
 
 .content__poster {
