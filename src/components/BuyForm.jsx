@@ -7,7 +7,8 @@ export default class BuyForm extends Component {
       razonSocial: '',
     email: '',
     direccionFiscal: '',
-    tipoFactura: ''
+    tipoFactura: '',
+    codigoPomo: ''
     }
   }
 
@@ -19,7 +20,7 @@ export default class BuyForm extends Component {
 
   render (  ) {
     const { handleInputChange, state } = this
-    const { razonSocial, email, direccionFiscal, tipoFactura } = state
+    const { razonSocial, email, direccionFiscal, tipoFactura, codigoPomo } = state
     return(
       <div className="buy__form">
       <form>
@@ -62,6 +63,16 @@ export default class BuyForm extends Component {
                   name="tipoFactura"
                   onChange={handleInputChange}
                   value={tipoFactura}
+              />
+          </div>
+          <div className="form-group ">
+              <label>Codigo de promoción</label>
+              <input
+                  type="text"
+                  className="form-control form-control-sm"
+                  name="codigoPomo"
+                  onChange={handleInputChange}
+                  value={codigoPomo}
               />
           </div>
       </form>

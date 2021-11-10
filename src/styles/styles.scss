@@ -15,3 +15,24 @@
 @import './components/ticket';
 @import './components/ending';
 @import './components/totalMount';
+
+    .main__container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+  .class__header {
+    flex-shrink: 0;
+    background-color: #037cf5;
+  }
+
+  footer {
+    height: 50px;
+    flex-shrink: 0;
+    background-color: #134c7d;
+  }
+
+  .class__main {
+    flex: 1 0 auto;
+  }
