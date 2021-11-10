@@ -22,7 +22,7 @@ export const calculateDailyServiceTotals = (dailyData) => {
   dailyData.forEach(dayConfig => {
     const { startHour, endHour } = dayConfig
     for(let i = startHour; i< endHour ; i++ ){
-        if( i <16 || i >= 20 ){
+        if( i <13 || i >= 20 ){
           lowHours++
         } else {
           highHours++
