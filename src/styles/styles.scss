@@ -26,9 +26,16 @@
     flex-shrink: 0;
     background-color: #037cf5;
   }
-
+  @media screen and (min-width: 768px) {
+    footer {
+      height: 50px;
+      flex-shrink: 0;
+      background-color: #134c7d;
+      min-height: 150px;
+    }
+  }
   footer {
-    height: 50px;
+    height: unset;
     flex-shrink: 0;
     background-color: #134c7d;
   }

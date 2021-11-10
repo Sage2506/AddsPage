@@ -34,6 +34,7 @@ export default class UploadFile extends Component {
         total: 0,
         totalCars: 0,
         totalImpactEstimation: 0,
+        cpm: 0,
         totalProjectTime: 0,
         totalSpots: 0,
         women: 0
@@ -93,6 +94,7 @@ export default class UploadFile extends Component {
     statistics.totalCars = Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
     const totalImpactEstimation = Math.round(statistics.totalCars * 1.5)
     statistics.totalImpactEstimation = Math.round(totalImpactEstimation)
+    statistics.cpm = Math.round(statistics.total / totalImpactEstimation)
     statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
     statistics.profileC = Math.round(totalImpactEstimation * 0.38)
     statistics.profileAB = Math.round(totalImpactEstimation * 0.12)
@@ -144,6 +146,7 @@ export default class UploadFile extends Component {
     statistics.totalCars =Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
     const totalImpactEstimation = statistics.totalCars * 1.5
     statistics.totalImpactEstimation = Math.round(totalImpactEstimation)
+    statistics.cpm = Math.round(statistics.total / totalImpactEstimation)
     statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
     statistics.profileC = Math.round(totalImpactEstimation * 0.38)
     statistics.profileAB = Math.round(totalImpactEstimation * 0.12)
@@ -201,6 +204,7 @@ export default class UploadFile extends Component {
       totalImpactEstimation,
       totalProjectTime,
       totalSpots,
+      cpm,
       women,
     } = statistics
 
@@ -262,6 +266,10 @@ export default class UploadFile extends Component {
                 <tr>
                   <td>Estimado de impactos</td>
                   <td>{totalImpactEstimation}</td>
+                </tr>
+                <tr>
+                  <td>CPM</td>
+                  <td>{cpm}</td>
                 </tr>
               </tbody>
             </table>

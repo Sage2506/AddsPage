@@ -2,9 +2,14 @@
     background-image: url('../../assets/img/home_movil.png');
     background-repeat: no-repeat;
     background-size: 100%;
-    height: 773px;
+    min-height: 1000px;
+    background-color: #199FFF;
 }
 
+
+.contratar__Web{
+  display: none;
+}
 .poster__ad {
     width: 100%;
     display: flex;
@@ -16,9 +21,15 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
+  min-height: 100vh;
   height: inherit;
 }
 
+.grid_double a {
+  position: absolute;
+  bottom: 0px;
+  left: 44%;
+}
 .grid_double div {
   display: flex;
   flex-direction: column;
@@ -34,8 +45,11 @@
 .grid_double div div div{
   padding: 40% 0%;
 }
-
 @media screen and (min-width: 768px) {
+
+  .contratar__Web{
+    display: block;
+  }
     .poster__ad {
         height: 50vh;
     }
@@ -53,6 +67,34 @@
     flex-direction: column;
     margin-bottom: 6em;
   }
+
+  .grid_double {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+    min-height: 100vh;
+    height: inherit;
+  }
+
+  .grid_double a {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+  }
+
+
+.contratar__mobil{
+  display: none;
+}
+.contratar__mobil__a{
+  display: none;
+}
+}
+
+.contratar__mobil__a {
+  position: absolute;
+  margin-top: 50%;
+  margin-left: 44%;
 }
 
 .content__poster {

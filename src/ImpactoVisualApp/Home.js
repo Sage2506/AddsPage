@@ -14,22 +14,21 @@ export const Home = () => {
         <div>
             <div className="cover__page">
               <div className="grid_double">
-                <div>
-                  <div>
-                  </div>
-                  <div>
-                    <div>
-                    <Link to="/contrato">
+              <Link to="/contrato">
                             <button
-                                className="btn btn-primary btn-home"
+                                className="btn btn-primary btn-home contratar__Web"
                             >Contratar
                             </button>
                         </Link>
-                    </div>
-                  </div>
-                </div>
               </div>
+            <Link to="/contrato" className="contratar__mobil__a">
+                            <button
+                                className="btn btn-primary btn-home contratar__mobil"
+                            >Contratar
+                            </button>
+                        </Link>
             </div>
+
         </div>
     )
 }
