@@ -15,7 +15,7 @@ export const PlanMensual = () => {
             <div>
             <p className="title">¿Cuál es tu plan con Loopita?</p>
             <p className="subtitle__plan-mensual">
-              Selecciona el mood que buscas con Loopita
+              Selecciona el propósito que buscas con Loopita
             </p>
             <PlanMensualCard
               setAmount={setAmount}
