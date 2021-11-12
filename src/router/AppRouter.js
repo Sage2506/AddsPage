@@ -10,7 +10,7 @@ import { PlanMensual } from "../ImpactoVisualApp/PlanMensual";
 import { PlanPorDia } from "../ImpactoVisualApp/PlanPorDia";
 import UploadFile from "../ImpactoVisualApp/UploadFile";
 import PreView from "../ImpactoVisualApp/PreView";
-import { BuyConfirm } from "../ImpactoVisualApp/BuyConfirm";
+import BuyConfirm from "../ImpactoVisualApp/BuyConfirm";
 import { TicketDay } from "../ImpactoVisualApp/TicketDay";
 import { Ending } from "../ImpactoVisualApp/Ending";
 

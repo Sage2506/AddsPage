@@ -20,6 +20,11 @@ export default class FormDataClient extends Component {
     this.setState({
         [e.target.name] : e.target.value
     })
+    const newClient = {
+        ...this.state,
+        [e.target.name] :e.target.value
+    }
+    setClient(newClient)
   }
 
   handleSubmit = e => {

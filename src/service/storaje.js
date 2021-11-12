@@ -72,3 +72,7 @@ export const setClient = client => {
 export const getClient = () => {
   return serviceData.clientData
 }
+
+export const getFullData = () => {
+    return serviceData;
+}

@@ -1,14 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-/* <Link to="/contrato">
-                            <button
-                                className="btn btn-primary btn-home"
-                            >Contratar
-                            </button>
-                        </Link>
-                         */
 export const Home = () => {
     return (
         <div>
