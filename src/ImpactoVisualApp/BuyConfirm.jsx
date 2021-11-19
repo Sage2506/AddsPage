@@ -52,7 +52,7 @@ export default class BuyConfirm extends Component {
                 <ButtonsWithMail
                     firstName="Atrás"
                     secondName="Siguiente"
-                    firstLink="previsualizacion"
+                    firstLink="archivos"
                     secondLink="finalizacion"
                     handleSubmit={this.handleSubmit}
                     submitDisabled= { !purchaseConfirmationInfo.razonSocial || !purchaseConfirmationInfo.rfc || !purchaseConfirmationInfo.direccionFiscal || !purchaseConfirmationInfo.tipoFactura}

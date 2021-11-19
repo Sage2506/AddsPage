@@ -93,7 +93,7 @@ export default class UploadFile extends Component {
     statistics.totalCars = Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
     const totalImpactEstimation = Math.round(statistics.totalCars * 1.5)
     statistics.totalImpactEstimation = Math.round(totalImpactEstimation)
-    statistics.cpm = statistics.total / totalImpactEstimation
+    statistics.cpm =  (statistics.total / totalImpactEstimation).toFixed(2)
     statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
     statistics.profileC = Math.round(totalImpactEstimation * 0.38)
     statistics.profileAB = Math.round(totalImpactEstimation * 0.12)
@@ -146,7 +146,7 @@ export default class UploadFile extends Component {
     statistics.totalCars =Math.round( this.state.carsPerHour / 18 / 60 * statistics.totalProjectTime)
     const totalImpactEstimation = statistics.totalCars * 1.5
     statistics.totalImpactEstimation = Math.round(totalImpactEstimation)
-    statistics.cpm = total / totalImpactEstimation
+    statistics.cpm = (total / totalImpactEstimation).toFixed(2)
     statistics.profileCPlus = Math.round(totalImpactEstimation * 0.35)
     statistics.profileC = Math.round(totalImpactEstimation * 0.38)
     statistics.profileAB = Math.round(totalImpactEstimation * 0.12)
@@ -325,31 +325,37 @@ export default class UploadFile extends Component {
             <table className="table table-striped">
               <tbody>
                 <tr>
-                  <th colSpan="2">Rangos de edad</th>
+                  <th colSpan="3">Rangos de edad</th>
                 </tr>
                 <tr>
                   <td>0-14</td>
                   <td>{ageRangeZeroToFourteen}</td>
+                  <td>(16%)</td>
                 </tr>
                 <tr>
                   <td>15-19</td>
                   <td>{ageRangeFifteenToNineteen}</td>
+                  <td>(15%)</td>
                 </tr>
                 <tr>
                   <td>20-29</td>
                   <td>{ageRangeTwentyToTwentynine}</td>
+                  <td>(14%)</td>
                 </tr>
                 <tr>
                   <td>30-44</td>
                   <td>{ageRangeThirtyToFourtyfour}</td>
+                  <td>(22%)</td>
                 </tr>
                 <tr>
                   <td>45-54</td>
                   <td>{ageRangeFourtyfiveToFiftyfour}</td>
+                  <td>(18%)</td>
                 </tr>
                 <tr>
                   <td>Más de 55</td>
                   <td>{ageRangeOverFiftyfive}</td>
+                  <td>(15%)</td>
                 </tr>
               </tbody>
             </table>
