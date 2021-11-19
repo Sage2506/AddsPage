@@ -5,7 +5,7 @@ export default class BuyForm extends Component {
     super(props);
     this.state = {
       razonSocial: '',
-    email: '',
+    rfc: '',
     direccionFiscal: '',
     tipoFactura: '',
     codigoPomo: ''
@@ -16,11 +16,13 @@ export default class BuyForm extends Component {
     this.setState({
       [e.target.name] : e.target.value
     })
+    this.props.editPurchaseInfo({...this.state, [e.target.name] : e.target.value})
+    //change upper component
   }
 
   render (  ) {
     const { handleInputChange, state } = this
-    const { razonSocial, email, direccionFiscal, tipoFactura, codigoPomo } = state
+    const { razonSocial, rfc, direccionFiscal, tipoFactura, codigoPomo } = state
     return(
       <div className="buy__form">
       <form>
@@ -37,11 +39,10 @@ export default class BuyForm extends Component {
           <div className="form-group">
               <label>RFC</label>
               <input
-                  type="email"
                   className="form-control form-control-sm"
-                  name="email"
+                  name="rfc"
                   onChange={handleInputChange}
-                  value={email}
+                  value={rfc}
               />
           </div>
           <div className="form-group">

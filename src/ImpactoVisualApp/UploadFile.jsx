@@ -48,7 +48,6 @@ export default class UploadFile extends Component {
     //TODO: show stellar picture
     //TODO: preview add inside stellar picture
     const screen = getLocalScreen(); // the selected screen for the list
-    console.log('screen', screen);
     const servicePlan = getSelectedPlan() // selected month plan if one
     const dailyServiceConfig = getSelectedDates(); // configurated daily plan if one
     if (servicePlan.id === -1 && dailyServiceConfig !== null) {
