@@ -11,12 +11,9 @@ export const useLocalStorage = (key, defaultValue) => {
     const [value, setValue] = useState(() => {
         return getStorageValue(key, defaultValue)
     });
-
     useEffect(() => {
         // storing data
         localStorage.setItem(key, JSON.stringify(value));
     }, [key, value]);
-    
-   // console.log(value, setValue);
     return [value, setValue]
 }

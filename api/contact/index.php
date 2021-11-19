@@ -3,13 +3,10 @@
     include_once('config.php');
 
     header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
-    header("Allow: GET, POST, OPTIONS, PUT, DELETE");
     header('Content-Type: application/json; charset=utf-8');
     $rest_json = file_get_contents("php://input");
     $_POST = json_decode($rest_json, true);
-    $isMensualPlan = true ;
+    $isMensualPlan = $_POST['mensualPlan']['id'] > -1 ;
     $screenName = $_POST['screenSelected']['name'];
     $clientName = $_POST['clientData']['nameClient'];
     $clientEmail = $_POST['clientData']['email'];
@@ -21,10 +18,10 @@
     $facType = $_POST['purchaseInfo']['tipoFactura'];
     $promoCode = $_POST['purchaseInfo']['codigoPomo'];
     $from = 'Servicio@impactovisual.info';
+    $monthlyPlanPrice = $_POST['mensualPlan']['price'];
 
         if( $isMensualPlan ){
             $monthlyPlanName = $_POST['mensualPlan']['name'];
-            $monthlyPlanPrice = $_POST['mensualPlan']['price'];
             $subject = 'Contact from: ' . $clientName;
             $message = "<html>
             <p>Se ha puesto en contacto <b>$clientName</b></p>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Buttons from '../components/Buttons';
 import DropFile from '../components/DropFile';
-import { getLocalScreen, getSelectedDates, getSelectedPlan, setLocalFileAdd } from '../service/storaje';
+import { getLocalScreen, getSelectedDates, getSelectedPlan, setLocalFileAdd, setSelectedPlan } from '../service/storaje';
 import { calculateDailyServiceTotals, currencyFormat } from '../utils/common';
 import preview from '../assets/img/preview.png';
 export default class UploadFile extends Component {
@@ -137,6 +137,7 @@ export default class UploadFile extends Component {
       women: 0,
     }
     const { total, minTotal, maxTotal, totalHours } = calculateDailyServiceTotals(dailyServiceConfig)
+    setSelectedPlan({ id: -1 , price : total})
     statistics.total = total;
     statistics.peakHour = maxTotal / 10;
     statistics.noPeakHour = minTotal / 10;
@@ -159,6 +160,7 @@ export default class UploadFile extends Component {
     statistics.ageRangeThirtyToFourtyfour = Math.round(totalImpactEstimation * 0.22)
     statistics.ageRangeFourtyfiveToFiftyfour = Math.round(totalImpactEstimation * 0.18)
     statistics.ageRangeOverFiftyfive = Math.round(totalImpactEstimation * 0.15)
+    debugger
 
     this.setState({
       statistics

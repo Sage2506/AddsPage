@@ -30,12 +30,10 @@ export default class BuyConfirm extends Component {
     handleSubmit = () => {
         var fullData = getFullData();
         var sumarizedData = {...fullData, purchaseInfo: this.state.purchaseConfirmationInfo}
-        console.log(sumarizedData)
         axios.post('https://loopita.impactovisual.info/api/contact/index.php', sumarizedData).then( response => {
-            console.log(response)
             if(response.data.sent){
-                alert('si se envió')
-                //this.setState({ redirect: true})
+                alert('¡Pronto nos contactaremos contigo!')
+                this.setState({ redirect: true})
             }
         })
     }
@@ -44,6 +42,7 @@ export default class BuyConfirm extends Component {
         if( redirect ){
             return (<Redirect to="/" />)
         } else{
+            const {purchaseConfirmationInfo} =this.state
             return (
             <div className="buy__confirm">
                 <p className="buy__title">
@@ -56,6 +55,7 @@ export default class BuyConfirm extends Component {
                     firstLink="previsualizacion"
                     secondLink="finalizacion"
                     handleSubmit={this.handleSubmit}
+                    submitDisabled= { !purchaseConfirmationInfo.razonSocial || !purchaseConfirmationInfo.rfc || !purchaseConfirmationInfo.direccionFiscal || !purchaseConfirmationInfo.tipoFactura}
                 />
             </div>
             )

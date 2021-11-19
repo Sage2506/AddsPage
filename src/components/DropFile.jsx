@@ -23,7 +23,6 @@ export default class DropFile extends Component {
 
   saveFile = e => {
     const fileName = e.target.files[0].name
-    console.log('file name', fileName)
     if(fileName.split('.').length > 1){
       this.setState({ fileExtension : fileName.split('.')[fileName.split('.').length-1]})
     }

@@ -15,7 +15,8 @@ export default class ButtonsWithMail extends Component {
             disabledBtn,
             firstSubText,
             secondSubText,
-            handleSubmit
+            handleSubmit,
+            submitDisabled
         } = this.props
 
         return (
@@ -32,7 +33,7 @@ export default class ButtonsWithMail extends Component {
                     )}
                 </Link>
                 <button
-                    className={`${disabledBtn ? `btn btn-primary btn-sm disabled disabled-link` : `btn btn-primary btn-sm`}`}
+                    className={`${ disabledBtn || submitDisabled ? `btn btn-primary btn-sm disabled disabled-link` : `btn btn-primary btn-sm`}`}
                     onClick={this.handleSubmit}
                     >
                     {secondName}

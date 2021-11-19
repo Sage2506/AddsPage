@@ -4,7 +4,7 @@ export default class BuyForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      razonSocial: '',
+    razonSocial: '',
     rfc: '',
     direccionFiscal: '',
     tipoFactura: '',
