@@ -2,7 +2,7 @@
     background-image: url('../../assets/img/home_movil.png');
     background-repeat: no-repeat;
     background-size: 100%;
-    min-height: 550px;
+    min-height: 80vh;
     background-color: #199FFF;
 }
 
@@ -93,9 +93,10 @@
 }
 
 .contratar__mobil__a {
-  position: absolute;
-  margin-top: 50%;
-  margin-left: 44%;
+    position: absolute;
+    margin-top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .content__poster {

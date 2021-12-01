@@ -159,7 +159,6 @@ export default class UploadFile extends Component {
     statistics.ageRangeThirtyToFourtyfour = Math.round(totalImpactEstimation * 0.22)
     statistics.ageRangeFourtyfiveToFiftyfour = Math.round(totalImpactEstimation * 0.18)
     statistics.ageRangeOverFiftyfive = Math.round(totalImpactEstimation * 0.15)
-    debugger
 
     this.setState({
       statistics
@@ -227,7 +226,7 @@ export default class UploadFile extends Component {
               </div>
             }
             {file &&  fileExtension !== "" && imageFormats.includes(fileExtension) &&
-              <img src={URL.createObjectURL(file)} alt="addPreview" />
+              <img className="previewImg" src={URL.createObjectURL(file)} alt="addPreview" />
             }
           </div>
         </div>

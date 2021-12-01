@@ -27,6 +27,7 @@ export default class DropFile extends Component {
       this.setState({ fileExtension : fileName.split('.')[fileName.split('.').length-1]})
     }
     this.setState({ file:  e.target.files[0], fileName: fileName})
+    this.props.uploadFile({ fileExtension : fileName.split('.')[fileName.split('.').length-1], file:  e.target.files[0], fileName: fileName})
   }
 
   render (  ) {
@@ -47,7 +48,6 @@ export default class DropFile extends Component {
             }
           </section>
         </div>
-        <div>{fileExtension}</div>
         <button type="button" onClick={saveChanges}> Guardar archivo</button>
       </div>
     );
