@@ -9,13 +9,11 @@ export default class ButtonsWithMail extends Component {
     render() {
         const {
             firstLink,
-            secondLink,
             firstName,
             secondName,
             disabledBtn,
             firstSubText,
             secondSubText,
-            handleSubmit,
             submitDisabled
         } = this.props
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Notification } from './Notification';
 
 export const FormInfoClient = (
   {
@@ -59,17 +58,7 @@ export const FormInfoClient = (
             onChange={handleChangeInput}
           />
         </div>
-
-        <div className="form-group ">
-          <input
-            type="submit"
-            className={`btn btn-primary btn-sm`}
-            value={`Ingresar datos`}
-          />
-        </div>
-
       </form>
-
     </div>
   )
 }

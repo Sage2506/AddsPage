@@ -79,7 +79,7 @@ export default class TimePickerDate extends Component {
   }
 
   render() {
-    const { startTimeDown, startTimeUp, endTimeDown, endTimeUp, state, handleHourChange } = this
+    const { startTimeDown, startTimeUp, endTimeDown, endTimeUp, state } = this
     const { stringDate, startHour, endHour } = state
     return (
       <div>

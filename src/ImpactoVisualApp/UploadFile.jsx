@@ -3,7 +3,6 @@ import Buttons from '../components/Buttons';
 import DropFile from '../components/DropFile';
 import { getLocalScreen, getSelectedDates, getSelectedPlan, setLocalFileAdd, setSelectedPlan } from '../service/storaje';
 import { calculateDailyServiceTotals, currencyFormat } from '../utils/common';
-import preview from '../assets/img/preview.png';
 export default class UploadFile extends Component {
   constructor(props) {
     super(props);

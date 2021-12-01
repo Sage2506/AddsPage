@@ -22,60 +22,64 @@
     $promoCode = $_POST['purchaseInfo']['codigoPomo'];
     $from = 'Servicio@impactovisual.info';
     $monthlyPlanPrice = $_POST['mensualPlan']['price'];
+     if(!empty($clientName)){
+         if( $isMensualPlan ){
+             $monthlyPlanName = $_POST['mensualPlan']['name'];
+             $subject = 'Contact from: ' . $clientName;
+             $message = "<html>
+             <p>Se ha puesto en contacto <b>$clientName</b></p>
+             <p>Paquete seleccionado: <b>$monthlyPlanName</b></p>
+             <p> Costo: <b>$monthlyPlanPrice</b></p>
+             <p> En la pantalla seleccionada: <b>$screenName</b></p>
+             <hr>
+             <p>Datos de contacto</p>
+             <p> Correo: <b>$clientEmail</b></p>
+             <p> Telefono: <b>$clientTel</b></p>
+             <hr>
+             <p> Nombre de campaña: <b>$clientCamp</b></p>
+             <p> Razón Social: <b>$socialName</b></p>
+             <p> RFC: <b>$rfc</b></p>
+             <p> Dirección Fiscal: <b>$fiscalAdd</b></p>
+             <p> Tipo Factura: <b>$facType</b></p>
+             <p> Codigo de Promoción: <b>$promoCode</b></p>
+             </html>";
 
-        if( $isMensualPlan ){
-            $monthlyPlanName = $_POST['mensualPlan']['name'];
-            $subject = 'Contact from: ' . $clientName;
-            $message = "<html>
-            <p>Se ha puesto en contacto <b>$clientName</b></p>
-            <p>Paquete seleccionado: <b>$monthlyPlanName</b></p>
-            <p> Costo: <b>$monthlyPlanPrice</b></p>
-            <p> En la pantalla seleccionada: <b>$screenName</b></p>
-            <hr>
-            <p>Datos de contacto</p>
-            <p> Correo: <b>$clientEmail</b></p>
-            <p> Telefono: <b>$clientTel</b></p>
-            <hr>
-            <p> Nombre de campaña: <b>$clientCamp</b></p>
-            <p> Razón Social: <b>$socialName</b></p>
-            <p> RFC: <b>$rfc</b></p>
-            <p> Dirección Fiscal: <b>$fiscalAdd</b></p>
-            <p> Tipo Factura: <b>$facType</b></p>
-            <p> Codigo de Promoción: <b>$promoCode</b></p>
-            </html>";
+             $sendEmail = new Sender($adminEmail, $from, $subject, $message);
+             $sendEmail->send();
+         } else {
+             $dailyPlan = $_POST['dailyPlan']['selectedDays'];
+             $subject = 'Contact from: ' . $clientName;
+             $message = "<html>
+             <p>Se ha puesto en contacto <b>$clientName</b></p>
 
-            $sendEmail = new Sender($adminEmail, $from, $subject, $message);
-            $sendEmail->send();
-        } else {
-            $dailyPlan = $_POST['dailyPlan']['selectedDays'];
-            $subject = 'Contact from: ' . $clientName;
-            $message = "<html>
-            <p>Se ha puesto en contacto <b>$clientName</b></p>
+             <p>Configuracion del paquete diario</p>";
+             foreach ($dailyPlan as $day){
+                 $date = $day['stringDate'];
+                 $startHour = $day['startHour'];
+                 $endHour = $day['endHour'];
+                 $message .= "<p>El <b>$date</b> desde las <b>$startHour</b> hasta las <b>$endHour</b></p>";
+             }
+             $message .="<p><b>  </b></p>
+             <p> Costo: <b>$monthlyPlanPrice</b></p>
+             <p> En la pantalla seleccionada: <b>$screenName</b></p>
+             <hr>
+             <p>Datos de contacto</p>
+                 <p> Correo: <b>$clientEmail</b></p>
+                 <p> Telefono: <b>$clientTel</b></p>
+             <hr>
+             <p> Nombre de campaña: <b>$clientCamp</b></p>
+             <p> Razón Social: <b>$socialName</b></p>
+             <p> RFC: <b>$rfc</b></p>
+             <p> Dirección Fiscal: <b>$fiscalAdd</b></p>
+             <p> Tipo Factura: <b>$facType</b></p>
+             <p> Codigo de Promoción: <b>$promoCode</b></p>
+             </html>";
 
-            <p>Configuracion del paquete diario</p>";
-            foreach ($dailyPlan as $day){
-                $date = $day['stringDate'];
-                $startHour = $day['startHour'];
-                $endHour = $day['endHour'];
-                $message .= "<p>El <b>$date</b> desde las <b>$startHour</b> hasta las <b>$endHour</b></p>";
-            }
-            $message .="<p><b>  </b></p>
-            <p> Costo: <b>$monthlyPlanPrice</b></p>
-            <p> En la pantalla seleccionada: <b>$screenName</b></p>
-            <hr>
-            <p>Datos de contacto</p>
-                <p> Correo: <b>$clientEmail</b></p>
-                <p> Telefono: <b>$clientTel</b></p>
-            <hr>
-            <p> Nombre de campaña: <b>$clientCamp</b></p>
-            <p> Razón Social: <b>$socialName</b></p>
-            <p> RFC: <b>$rfc</b></p>
-            <p> Dirección Fiscal: <b>$fiscalAdd</b></p>
-            <p> Tipo Factura: <b>$facType</b></p>
-            <p> Codigo de Promoción: <b>$promoCode</b></p>
-            </html>";
-
-            $sendEmail = new Sender($adminEmail, $from, $subject, $message);
-            $sendEmail->send();
-        }
+             $sendEmail = new Sender($adminEmail, $from, $subject, $message);
+             $sendEmail->send();
+         }
+     } else {
+        $response = array( 'sent'=>false , 'clientName' => $clientName);
+        echo json_encode($response);
+     }
     ?>

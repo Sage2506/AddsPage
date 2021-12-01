@@ -1,7 +1,5 @@
 import React from 'react';
-import {getFullData} from '../service/storaje'
 export const Ending = () => {
-    const serviceData = getFullData()
     return (
         <div className="ending__container">
             <p className="title__ending">Finalización</p>

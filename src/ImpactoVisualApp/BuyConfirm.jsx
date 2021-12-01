@@ -10,7 +10,8 @@ export default class BuyConfirm extends Component {
         super(props)
         this.state= {
             purchaseConfirmationInfo : {},
-            redirect : false
+            redirect : false,
+            disableManually : false,
         }
     }
 
@@ -28,17 +29,21 @@ export default class BuyConfirm extends Component {
     }
 
     handleSubmit = () => {
+        this.setState({ disableManually : true})
         var fullData = getFullData();
         var sumarizedData = {...fullData, purchaseInfo: this.state.purchaseConfirmationInfo}
         axios.post('https://loopita.impactovisual.info/api/contact/index.php', sumarizedData).then( response => {
             if(response.data.sent){
                 alert('¡Pronto nos contactaremos contigo!')
+                this.setState({ disableManually : true})
                 this.setState({ redirect: true})
+            } else {
+                this.setState({ disableManually : true})
             }
         })
     }
     render() {
-        var {redirect} = this.state
+        var {redirect, disableManually} = this.state
         if( redirect ){
             return (<Redirect to="/" />)
         } else{
@@ -55,7 +60,7 @@ export default class BuyConfirm extends Component {
                     firstLink="archivos"
                     secondLink="finalizacion"
                     handleSubmit={this.handleSubmit}
-                    submitDisabled= { !purchaseConfirmationInfo.razonSocial || !purchaseConfirmationInfo.rfc || !purchaseConfirmationInfo.direccionFiscal || !purchaseConfirmationInfo.tipoFactura}
+                    submitDisabled= { !purchaseConfirmationInfo.razonSocial || !purchaseConfirmationInfo.rfc || !purchaseConfirmationInfo.direccionFiscal || !purchaseConfirmationInfo.tipoFactura || disableManually}
                 />
             </div>
             )
