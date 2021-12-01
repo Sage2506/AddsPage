@@ -57,7 +57,7 @@ export default class BuyForm extends Component {
           </div>
 
           <div className="form-group ">
-              <label>Tipo de factura</label>
+              <label>Forma de pago</label>
               <input
                   type="text"
                   className="form-control form-control-sm"

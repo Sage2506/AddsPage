@@ -40,7 +40,7 @@
              <p> Razón Social: <b>$socialName</b></p>
              <p> RFC: <b>$rfc</b></p>
              <p> Dirección Fiscal: <b>$fiscalAdd</b></p>
-             <p> Tipo Factura: <b>$facType</b></p>
+             <p> Forma de pago: <b>$facType</b></p>
              <p> Codigo de Promoción: <b>$promoCode</b></p>
              </html>";
 
@@ -71,7 +71,7 @@
              <p> Razón Social: <b>$socialName</b></p>
              <p> RFC: <b>$rfc</b></p>
              <p> Dirección Fiscal: <b>$fiscalAdd</b></p>
-             <p> Tipo Factura: <b>$facType</b></p>
+             <p> Forma de pago: <b>$facType</b></p>
              <p> Codigo de Promoción: <b>$promoCode</b></p>
              </html>";
 

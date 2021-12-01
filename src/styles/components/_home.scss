@@ -6,6 +6,17 @@
     background-color: #199FFF;
 }
 
+.desktop_info{
+    display: none;
+    color: white;
+}
+
+.mobile_info{
+    text-align: center;
+    margin-top: 20%;
+    display: block;
+    color: white;
+}
 
 .contratar__Web{
   display: none;
@@ -25,14 +36,10 @@
   height: inherit;
 }
 
-.grid_double a {
-  position: absolute;
-  bottom: 0px;
-  left: 44%;
-}
 .grid_double div {
   display: flex;
   flex-direction: column;
+  padding: 2em;
 }
 
 .grid_double div div {
@@ -73,16 +80,9 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 2rem;
-    min-height: 100vh;
+    min-height: 120vh;
     height: inherit;
   }
-
-  .grid_double a {
-    position: absolute;
-    bottom: 5%;
-    left: 5%;
-  }
-
 
 .contratar__mobil{
   display: none;
@@ -90,13 +90,21 @@
 .contratar__mobil__a{
   display: none;
 }
+.desktop_info{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+}
+.mobile_info{
+    display: none;
+}
 }
 
 .contratar__mobil__a {
     position: absolute;
-    margin-top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0%);
 }
 
 .content__poster {
