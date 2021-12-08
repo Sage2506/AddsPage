@@ -60,7 +60,7 @@ export default class BuyConfirm extends Component {
                     firstLink="archivos"
                     secondLink="finalizacion"
                     handleSubmit={this.handleSubmit}
-                    submitDisabled= { !purchaseConfirmationInfo.razonSocial || !purchaseConfirmationInfo.rfc || !purchaseConfirmationInfo.direccionFiscal || !purchaseConfirmationInfo.tipoFactura || disableManually}
+                    submitDisabled= { disableManually }
                 />
             </div>
             )
