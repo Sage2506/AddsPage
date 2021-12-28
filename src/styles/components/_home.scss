@@ -56,6 +56,7 @@
 
   .contratar__Web{
     display: block;
+    font-size: 1.8em;
   }
     .poster__ad {
         height: 50vh;
@@ -73,7 +74,6 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin-bottom: 6em;
   }
 
   .grid_double {
@@ -94,8 +94,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding-top: 30px;
 }
+
 .mobile_info{
     display: none;
 }

@@ -48,7 +48,6 @@ export default class DropFile extends Component {
             }
           </section>
         </div>
-        <button type="button" onClick={saveChanges}> Guardar archivo</button>
       </div>
     );
   }

@@ -9,20 +9,20 @@ export const Home = () => {
 
                     <div style={{ textAlign: "center" }} >
                         <div style={{ flex: 7 }}></div>
-                        <h4 className="desktop_info">
-                            Contrata una pauta en medios <br /> exteriores a la medida de tu marca
-                        </h4>
-                        <div style={{ flex: 1 }} >
+                        <div style={{ flex: 1 }} class="desktop_button">
                             <Link to="/contrato" style={{ maxWidth: '150px' }}>
                                 <button
-                                    className="btn btn-primary btn-home contratar__Web"
+                                    className="btn btn-primary btn-home contratar__Web "
                                 >Contratar
                                 </button>
                             </Link>
                         </div>
+                        <h4 className="desktop_info">
+                            Contrata una pauta en medios <br /> exteriores a la medida de tu marca
+                        </h4>
                     </div>
                 </div>
-                <div style={{ textAlign: "center", paddingTop:'30px' }} >
+                <div style={{ textAlign: "center", paddingTop:'30px' }}>
                     <h4 className="mobile_info">
                         Contrata una pauta en medios exteriores a la medida de tu marca
                     </h4>
